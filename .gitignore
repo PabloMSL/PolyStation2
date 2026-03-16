@@ -3,3 +3,4 @@ venv/
 principalstation/.env
 principalstation/serviceAccountKey.json
 
+.env
