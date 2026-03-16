@@ -99,3 +99,85 @@ def login_comprador(request):
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=400)
     return JsonResponse({"error": "Método no permitido"}, status=405)
+
+def catalogo(request):
+    # GET no necesita csrf_exempt usualmente si es solo lectura
+    juegos = []
+    try:
+        docs = db.collection('juegos').stream()
+        for doc in docs:
+            juego = doc.to_dict()
+            juego['id'] = doc.id
+            juegos.append(juego)
+        return JsonResponse(juegos, safe=False, status=200)
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
+
+@csrf_exempt
+def comprar_juego(request, juego_id):
+    if request.method == 'POST':
+        uid = request.session.get('uid')
+        if not uid:
+            return JsonResponse({"error": "No autenticado"}, status=401)
+        
+        try:
+            juego_ref = db.collection('juegos').document(juego_id)
+            doc = juego_ref.get()
+
+            if not doc.exists:
+                return JsonResponse({"error": "Juego no existe"}, status=404)
+
+            juego = doc.to_dict()
+            db.collection('compras').add({
+                'usuario_id': uid,
+                'juego_id': juego_id,
+                'titulo': juego.get('titulo'),
+                'precio': juego.get('precio'),
+                'fecha_compra': firestore.SERVER_TIMESTAMP
+            })
+
+            return JsonResponse({"mensaje": "Compra realizada con éxito"}, status=201)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
+    return JsonResponse({"error": "Método no permitido"}, status=405)
+
+def biblioteca(request):
+    uid = request.session.get('uid')
+    if not uid:
+        return JsonResponse({"error": "No autenticado"}, status=401)
+        
+    juegos = []
+    try:
+        docs = db.collection('compras').where('usuario_id', '==', uid).stream()
+        for doc in docs:
+            compra = doc.to_dict()
+            compra['id'] = doc.id
+            juegos.append(compra)
+        return JsonResponse(juegos, safe=False, status=200)
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
+
+@csrf_exempt
+def crear_resena(request, juego_id):
+    if request.method == 'POST':
+        uid = request.session.get('uid')
+        if not uid:
+            return JsonResponse({"error": "No autenticado"}, status=401)
+
+        try:
+            data = json.loads(request.body)
+            calificacion = data.get('calificacion')
+            comentario = data.get('comentario')
+
+            db.collection('resenas').add({
+                'usuario_id': uid,
+                'juego_id': juego_id,
+                'calificacion': int(calificacion),
+                'comentario': comentario,
+                'fecha': firestore.SERVER_TIMESTAMP
+            })
+
+            return JsonResponse({"mensaje": "Reseña publicada"}, status=201)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=400)
+    return JsonResponse({"error": "Método no permitido"}, status=405)
