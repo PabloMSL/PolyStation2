@@ -3,8 +3,8 @@ POST http://127.0.0.1:8000/game/registro/
 Content-Type: application/json
 
 {
-    "username":"Yuu",
-    "email" : "Johan@gmail.com",
+    "username":"Holguin",
+    "email" : "Holguin@gmail.com",
     "password" : "123456"
 }
 
@@ -13,22 +13,22 @@ POST http://127.0.0.1:8000/game/login/
 Content-Type: application/json
 
 {
-    "username": "Yuu",
-    "email": "Johan@gmail.com",
+    "username": "Holguin",
+    "email": "Holguin@gmail.com",
     "password": "123456",
     "rol" : "comprador"
 }
 
 ### Ver biblioteca
 GET http://127.0.0.1:8000/game/biblioteca/
-Authorization: Bearer
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjczMmNhOTY3MTNiMWRkMTcyMzg1MDg0Y2U5ZjQzODFhZDAwY2VjZTQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYml0Y29ubmVjdC01NmJkNyIsImF1ZCI6ImJpdGNvbm5lY3QtNTZiZDciLCJhdXRoX3RpbWUiOjE3NzM3MTI4NTIsInVzZXJfaWQiOiJQSXY3bXNPekRlZlF3WWFtWVNkSHYxYXFMOXkxIiwic3ViIjoiUEl2N21zT3pEZWZRd1lhbVlTZEh2MWFxTDl5MSIsImlhdCI6MTc3MzcxMjg1MiwiZXhwIjoxNzczNzE2NDUyLCJlbWFpbCI6ImhvbGd1aW5AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImhvbGd1aW5AZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.0Vn0NlqYV0mbB1wRFxok2r9XQQwfAApCEIpUJNbR3OlVjjf3FyqS3cIwKl61EKL-SFrqX2aiDrguUiGQOMferNWR4bztyOyiW4HI-7nEDDAXAT-cxv5bfKZPTK0Xshjsp-vdmLAohLtbYHNfvXHR1cDhKc0dQuodbr2CNbZVJvRe8_vooU0VOWS2eubYX0UCSVSxneJA3aXqTX6medgHV9QWpD3abbcVPQVhHowP0AsBjsS-spicax_0JjFt0zBjekEcfx1oYyndco3N3EkUaW0v9G-v8TGzEXDHKc3WUJFoa-UeIsqsvIEs_lYHVMi9MsLBOSKMOELJzPwl86cKyQ
 
 ### Comprar 
-POST http://127.0.0.1:8000/game/comprar/abc123/
+POST http://127.0.0.1:8000/game/comprar/Mario/
 Content-Type: application/json
-Authorization: Bearer
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjczMmNhOTY3MTNiMWRkMTcyMzg1MDg0Y2U5ZjQzODFhZDAwY2VjZTQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYml0Y29ubmVjdC01NmJkNyIsImF1ZCI6ImJpdGNvbm5lY3QtNTZiZDciLCJhdXRoX3RpbWUiOjE3NzM3MTI4NTIsInVzZXJfaWQiOiJQSXY3bXNPekRlZlF3WWFtWVNkSHYxYXFMOXkxIiwic3ViIjoiUEl2N21zT3pEZWZRd1lhbVlTZEh2MWFxTDl5MSIsImlhdCI6MTc3MzcxMjg1MiwiZXhwIjoxNzczNzE2NDUyLCJlbWFpbCI6ImhvbGd1aW5AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImhvbGd1aW5AZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.0Vn0NlqYV0mbB1wRFxok2r9XQQwfAApCEIpUJNbR3OlVjjf3FyqS3cIwKl61EKL-SFrqX2aiDrguUiGQOMferNWR4bztyOyiW4HI-7nEDDAXAT-cxv5bfKZPTK0Xshjsp-vdmLAohLtbYHNfvXHR1cDhKc0dQuodbr2CNbZVJvRe8_vooU0VOWS2eubYX0UCSVSxneJA3aXqTX6medgHV9QWpD3abbcVPQVhHowP0AsBjsS-spicax_0JjFt0zBjekEcfx1oYyndco3N3EkUaW0v9G-v8TGzEXDHKc3WUJFoa-UeIsqsvIEs_lYHVMi9MsLBOSKMOELJzPwl86cKyQ
 {
-    "juego_id": "abc123"
+    "juego_id": "Mario"
 }
 
 ### Reseña

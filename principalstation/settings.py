@@ -131,6 +131,9 @@ REST_FRAMEWORK={
     
 }
 
+# Use signed-cookie session engine so Django does not require django_session DB table.
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+
 SPECTACULAR_SETTINGS = {
     'TITLE':'Api de Servicio en linea de videojuegos - ADSO 3203084',
     'DESCRIPTION':'Api REST para gestionar tareas, con autenticacion JWT y roles de usuario',
