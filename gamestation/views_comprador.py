@@ -71,6 +71,7 @@ def login_comprador(request):
             email = data.get('email')
             password = data.get('password')
             api_key = os.getenv('FIREBASE_WEB_API_KEY')
+            print("api", api_key)
 
             url = f"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={api_key}"
             payload = {
@@ -96,6 +97,7 @@ def login_comprador(request):
                 }, status=200)
             else:
                 return JsonResponse({"error": "Credenciales inválidas"}, status=401)
+
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=400)
     return JsonResponse({"error": "Método no permitido"}, status=405)
