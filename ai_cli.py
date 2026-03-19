@@ -23,20 +23,66 @@ def login_usuario():
     return None
 
 # Herramineta
-def consultar_mis_juegos(token_firebase):
+def listar_juegos_del_distribuidor(token_firebase):
     """
-    Consulta los juegos del usuario autenticado usando el token de firebase
+    Obtiene la lista de juegos que pertenecen únicamente al distribuidor autenticado.
+    Retorna una lista de diccionarios con el ID, título, precio y otros detalles.
     """
-    
-    print("EL SISTEMA ESTA CONSULTANDO TUS JUEGOS...")
-    url = "http://127.0.1:8000/apis/mis-juegos/"
+    print("--- LA IA ESTÁ CONSULTANDO TU CATÁLOGO PRIVADO ---")
+    url = "http://127.0.0.1:8000/game/mis-juegos/"
     headers = {"Authorization": f"Bearer {token_firebase}"}
     
     try:
         response = requests.get(url, headers=headers)
-        return response.json()
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return {"error": f"Error del servidor: {response.status_code}", "detalle": response.text}
     except Exception as e:
-        return {"error": str(e)}
+        return {"error": f"Error de conexión: {str(e)}"}
+    
+
+def crear_nuevo_juego(token_firebase, titulo, descripcion, genero, precio, requisitos="N/A"):
+    """
+    Crea un nuevo juego en la base de datos.
+    """
+    url = "http://127.0.0.1:8000/game/crear-juego/"
+    headers = {"Authorization": f"Bearer {token_firebase}"}
+    payload = {
+        "titulo": titulo,
+        "descripcion": descripcion,
+        "genero": genero,
+        "precio": precio,
+        "requisitos": requisitos
+    }
+    response = requests.post(url, json=payload, headers=headers)
+    return response.json()
+
+def editar_juego_existente(token_firebase, juego_id, titulo, descripcion, genero, precio, requisitos="N/A"):
+    """
+    Edita un juego existente usando su ID.
+    """
+    url = f"http://127.0.0.1:8000/game/editar-juego/{juego_id}/"
+    headers = {"Authorization": f"Bearer {token_firebase}"}
+    payload = {
+        "titulo": titulo,
+        "descripcion": descripcion,
+        "genero": genero,
+        "precio": precio,
+        "requisitos": requisitos
+    }
+    # Tu vista acepta POST o PUT
+    response = requests.post(url, json=payload, headers=headers)
+    return response.json()
+
+def borrar_juego(token_firebase, juego_id):
+    """
+    Elimina un juego de la base de datos definitivamente.
+    """
+    url = f"http://127.0.0.1:8000/game/eliminar-juego/{juego_id}/"
+    headers = {"Authorization": f"Bearer {token_firebase}"}
+    response = requests.delete(url, headers=headers)
+    return response.json()
 
 # 3. Configuracion de la IA
 
@@ -68,7 +114,12 @@ if token:
                 model=modelo_id,
                 contents=prompt,
                 config=types.GenerateContentConfig(
-                    tools=[consultar_mis_juegos]
+                    tools=[
+                        listar_juegos_del_distribuidor,
+                        crear_nuevo_juego,
+                        editar_juego_existente,
+                        borrar_juego
+                    ]
                 )
             )
             print(f"IA: {response.text}")

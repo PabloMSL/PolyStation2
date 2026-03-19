@@ -1,5 +1,15 @@
 # � PolyStation2
 
+## Autores:
+
+  - Johan Sebastian Castro Gonzalez y su Rama: `Johan`
+  - Juan Pablo Mozuca Chaparro y su Rama: `PablitoRama`
+  - David Santiago Beltran Pedraza y su Rama: `HigorRama`
+
+---
+
+## Introduccion: 
+
 > PolyStation2 es un sistema Django para e-commerce con roles distribuidor/comprador, autenticación y APIs REST.
 
 [![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green)](https://www.djangoproject.com/)
@@ -56,12 +66,41 @@ Prueba con el test.http.
 
 ## 🧱 Stack tecnológico
 
-- Django
-- Django REST Framework
-- Firebase Admin (autenticación/configuración)
-- HTTP
+### Núcleo del Servidor
 
----
+- Django (6.0.2)
+
+- Django REST Framework (3.16.1)
+
+- SimpleJWT (5.5.1)
+
+- Python-dotenv.
+
+### Base de Datos y Cloud
+
+- Firebase Admin SDK (7.1.0)
+
+- Google Cloud Firestore
+
+- Cloudinary (1.44.1)
+
+
+### Comunicación y Protocolos
+
+- Requests / HTTPX
+
+- gRPC
+
+### Documentación y Utilidades
+ 
+- DRF-Spectacular (0.29.0)
+
+
+- PyYAML / JSONSchema
+
+### IA
+
+- Google-Genai
 
 ## 🗂️ Estructura del proyecto
 
@@ -85,13 +124,22 @@ PolyStation2/
 │   └── urls.py
 ├── db.sqlite3
 ├── manage.py
+├── ai_cli.py
+├── .gitignore
 ├── requirements.txt
-└── README.md
+├── README.md
+└── lister.py
+
 ```
 
 ---
 
 ## 🔎 Documentación API 
+
+
+
+[Polystation Documentacion](./Documentacion_Polystation.pdf)
+
 
 ---
 
@@ -102,5 +150,7 @@ PolyStation2/
   - Santiago Beltran Pedraza: `Santiago-Beltran1`
 
 ---
+
+
 
 
