@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_spectacular',
     'gamestation'
+
 ]
 
 MIDDLEWARE = [
@@ -69,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'principalstation.wsgi.application'
+ASGI_APPLICATION = 'principalstation.asgi.application'
 
 
 # Database
@@ -139,4 +142,10 @@ SPECTACULAR_SETTINGS = {
     'DESCRIPTION':'Api REST para gestionar tareas, con autenticacion JWT y roles de usuario',
     'VERSION':'1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
+}
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    },
 }
