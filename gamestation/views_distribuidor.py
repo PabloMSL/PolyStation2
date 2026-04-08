@@ -73,7 +73,11 @@ def login_distribuidor(request):
                 request.session['uid'] = fb_data['localId']
                 request.session['email'] = fb_data['email']
                 request.session['rol'] = 'distribuidor'
-                return JsonResponse({"mensaje": "Login exitoso", "uid": fb_data['localId']}, status=200)
+                return JsonResponse({
+                    "mensaje": "Login exitoso", 
+                    "uid": fb_data['localId'],
+                    "token": fb_data.get('idToken') # <-- Agregado
+                }, status=200)
             else:
                 return JsonResponse({"error": "Credenciales incorrectas"}, status=401)
         except Exception as e:
@@ -119,6 +123,7 @@ def crear_juego(request):
                 'genero': data.get('genero'),
                 'precio': float(data.get('precio')),
                 'requisitos': data.get('requisitos'),
+                'imagen_url': data.get('imagen_url', ''), # <-- Soporte para cloudinary
                 'distribuidor_id': uid,
                 'fecha_creacion': firestore.SERVER_TIMESTAMP
             }

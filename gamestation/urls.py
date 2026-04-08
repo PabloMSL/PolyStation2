@@ -1,7 +1,7 @@
 from django.urls import path
 from .views_comprador import *
 from .views_distribuidor import *
-from .views_chat import ChatHistorialAPIView
+from .views_chat import *
 
 urlpatterns = [
 
@@ -27,5 +27,4 @@ path('crear-juego/', crear_juego, name='crear_juego'),
 path('editar-juego/<str:juego_id>/', editar_juego, name='editar_juego'),
 path('eliminar-juego/<str:juego_id>/', eliminar_juego, name='eliminar_juego'),
 
-path('chat/historial/', ChatHistorialAPIView.as_view(), name='chat_historial'),
 ]

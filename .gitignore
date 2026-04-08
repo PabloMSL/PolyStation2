@@ -4,3 +4,5 @@ principalstation/.env
 principalstation/serviceAccountKey.json
 
 .env
+
+__pycache__/

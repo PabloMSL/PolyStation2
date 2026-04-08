@@ -3,8 +3,8 @@ POST http://127.0.0.1:8000/game/registro/
 Content-Type: application/json
 
 {
-    "username":"Holguin",
-    "email" : "Holguin@gmail.com",
+    "username":"Yuu",
+    "email" : "Yuu@gmail.com",
     "password" : "123456"
 }
 
@@ -13,20 +13,19 @@ POST http://127.0.0.1:8000/game/login/
 Content-Type: application/json
 
 {
-    "username": "Holguin",
-    "email": "Holguin@gmail.com",
-    "password": "123456",
-    "rol" : "comprador"
+    "username": "Yuu",
+    "email": "Yuu@gmail.com",
+    "password": "123456"
 }
 
 ### Ver biblioteca
 GET http://127.0.0.1:8000/game/biblioteca/
-Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjczMmNhOTY3MTNiMWRkMTcyMzg1MDg0Y2U5ZjQzODFhZDAwY2VjZTQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYml0Y29ubmVjdC01NmJkNyIsImF1ZCI6ImJpdGNvbm5lY3QtNTZiZDciLCJhdXRoX3RpbWUiOjE3NzM3MTI4NTIsInVzZXJfaWQiOiJQSXY3bXNPekRlZlF3WWFtWVNkSHYxYXFMOXkxIiwic3ViIjoiUEl2N21zT3pEZWZRd1lhbVlTZEh2MWFxTDl5MSIsImlhdCI6MTc3MzcxMjg1MiwiZXhwIjoxNzczNzE2NDUyLCJlbWFpbCI6ImhvbGd1aW5AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImhvbGd1aW5AZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.0Vn0NlqYV0mbB1wRFxok2r9XQQwfAApCEIpUJNbR3OlVjjf3FyqS3cIwKl61EKL-SFrqX2aiDrguUiGQOMferNWR4bztyOyiW4HI-7nEDDAXAT-cxv5bfKZPTK0Xshjsp-vdmLAohLtbYHNfvXHR1cDhKc0dQuodbr2CNbZVJvRe8_vooU0VOWS2eubYX0UCSVSxneJA3aXqTX6medgHV9QWpD3abbcVPQVhHowP0AsBjsS-spicax_0JjFt0zBjekEcfx1oYyndco3N3EkUaW0v9G-v8TGzEXDHKc3WUJFoa-UeIsqsvIEs_lYHVMi9MsLBOSKMOELJzPwl86cKyQ
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjVlODJhZmI0ZWY2OWI3NjM4MzA2OWFjNmI1N2U3ZTY1MjAzYmZlOTYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYml0Y29ubmVjdC01NmJkNyIsImF1ZCI6ImJpdGNvbm5lY3QtNTZiZDciLCJhdXRoX3RpbWUiOjE3NzU2MDc0MjgsInVzZXJfaWQiOiJrTGhEcEJudHBxZnVXR0tYMUNXWDFNNnljaXEyIiwic3ViIjoia0xoRHBCbnRwcWZ1V0dLWDFDV1gxTTZ5Y2lxMiIsImlhdCI6MTc3NTYwNzQyOCwiZXhwIjoxNzc1NjExMDI4LCJlbWFpbCI6Inl1dUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsieXV1QGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.PboXQRPaNjHyNDit4P1zMz_HIylXldot1sQasSIYaeT0p9ZnUAsQdtLV7AZV2Pl2W62tlZlTAM2e-zfhQ0NA_2TanrMdV3l_U-D5RRVG7yP46cJyQqvZs-XqSmZLmWv5EXYgOuZPSG2p_HvVe-cnvXXpLft3aYP-2kZpemQDOtIf7QiwZIPu6ZDFwsQCYF4y1d37vhdwHJb_mbwvxjnV0Tt2xBglimGJM4pRW6cog9c3Rwu8TuR37Wm9lVKa65oAXm7URdE5iVD5Lxc1f9fhXM2v2XLyZ8wEj-da8A4B9qe_792GlFwhtu3m_VM_XIYDXS6mt67-xM4TQ6FTb94yuQ
 
 ### Comprar 
 POST http://127.0.0.1:8000/game/comprar/Mario/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjczMmNhOTY3MTNiMWRkMTcyMzg1MDg0Y2U5ZjQzODFhZDAwY2VjZTQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYml0Y29ubmVjdC01NmJkNyIsImF1ZCI6ImJpdGNvbm5lY3QtNTZiZDciLCJhdXRoX3RpbWUiOjE3NzM3MTI4NTIsInVzZXJfaWQiOiJQSXY3bXNPekRlZlF3WWFtWVNkSHYxYXFMOXkxIiwic3ViIjoiUEl2N21zT3pEZWZRd1lhbVlTZEh2MWFxTDl5MSIsImlhdCI6MTc3MzcxMjg1MiwiZXhwIjoxNzczNzE2NDUyLCJlbWFpbCI6ImhvbGd1aW5AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImhvbGd1aW5AZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.0Vn0NlqYV0mbB1wRFxok2r9XQQwfAApCEIpUJNbR3OlVjjf3FyqS3cIwKl61EKL-SFrqX2aiDrguUiGQOMferNWR4bztyOyiW4HI-7nEDDAXAT-cxv5bfKZPTK0Xshjsp-vdmLAohLtbYHNfvXHR1cDhKc0dQuodbr2CNbZVJvRe8_vooU0VOWS2eubYX0UCSVSxneJA3aXqTX6medgHV9QWpD3abbcVPQVhHowP0AsBjsS-spicax_0JjFt0zBjekEcfx1oYyndco3N3EkUaW0v9G-v8TGzEXDHKc3WUJFoa-UeIsqsvIEs_lYHVMi9MsLBOSKMOELJzPwl86cKyQ
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjczMmNhOTY3MTNiMWRkMTcyMzg1MDg0Y2U5ZjQzODFhZDAwY2VjZTQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYml0Y29ubmVjdC01NmJkNyIsImF1ZCI6ImJpdGNvbm5lY3QtNTZiZDciLCJhdXRoX3RpbWUiOjE3NzM4MzcyNDYsInVzZXJfaWQiOiJlWFh5dVhmWE9ZTXg1V0R1VEJ6N1lGcFptNXkyIiwic3ViIjoiZVhYeXVYZlhPWU14NVdEdVRCejdZRnBabTV5MiIsImlhdCI6MTc3MzgzNzI0NiwiZXhwIjoxNzczODQwODQ2LCJlbWFpbCI6ImhpZ29yQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJoaWdvckBnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.HGXLjGFe2gesSs-MHFvJMlvSlFIreUVw1NxicBqbe6capjKEricO9BJq0NG4Q6KHrCsP1OOc2EWM33lVbmAZLIwan-aRALwZbPNdzNkHQDoxBVAboJLjxkUigEXeCl65jU6UmjnmYD5F3oSs-CfVtP7TLd5DZijixKKSnDkivmjmFpiBZYGwJfDrXtOnrn_a3c7a2oDwwpNwhoPpCHOucEX1O3Zp2ydU5mDvlpnFq7mQmMoltI6ecZsvt2DWerjws0Kd3F7HSuMJCwHV712mHeroeMxk9IqpcRsRmHkr8NwU-tZYceA24Xc4ymhAZN1RfN3tyX7Bf8-nQERnnEk_PQ
 {
     "juego_id": "Mario"
 }
@@ -73,26 +72,26 @@ Content-Type: application/json
 Authorization: Bearer 
 
 {
-    "titulo": "Mario",
-    "descripcion": "Un juego de plataformas",
+    "titulo": "Prueba",
+    "descripcion": "test",
     "precio": 29.99,
-    "genero": "Plataformero"
+    "genero": "Accion"
 }
 
 ### Editar un juego
-PUT http://127.0.0.1:8000/game/editar-juego/abc123/
+PUT http://127.0.0.1:8000/game/editar-juego/4DEhLtmaJXJPliCJ6rm1/
 Content-Type: application/json
 Authorization: Bearer 
 
 {
-    "titulo": "Mario 2",
-    "descripcion": "Versión mejorada",
-    "precio": 19.99,
-    "genero": "Plataformero"
+    "titulo": "DeadLock",
+    "descripcion": "Un juego de disparos y MOBA",
+    "precio": 0,
+    "genero": "MOBA"
 }
-
+ 
 ### Eliminar un juego
-DELETE http://127.0.0.1:8000/game/eliminar-juego/abc123/
+DELETE http://127.0.0.1:8000/game/eliminar-juego/pBODGcYXcvfX53MMgaDh/
 Authorization: Bearer 
 
 ### 4 subir imagen a firestore
@@ -106,3 +105,30 @@ Content-Type: image/jpeg
 
 < C:\Users\SENA\Desktop\christian2\donkey.jpeg
 --MiBoundary--
+
+
+### Editar juego Zelda (Prueba de WebSocket)
+PUT http://127.0.0.1:8000/game/editar-juego/58WG3PlVpn6J4qIJPvxl/
+Content-Type: application/json
+Authorization: Bearer TU_TOKEN_AQUI
+
+{
+    "titulo": "Zelda: Breath of the Wild",
+    "precio": 19.99,
+    "genero": "Accion",
+    "descripcion": "Actualizado por WebSocket"
+}
+
+
+### Crear un juego (Ahora con imagen de Cloudinary)
+POST http://127.0.0.1:8000/game/crear-juego/
+Content-Type: application/json
+Authorization: Bearer AQUI_TU_TOKEN
+
+{
+    "titulo": "Devil May Cry V",
+    "descripcion": "Un juego Hack and Slash",
+    "precio": 7.49,
+    "genero": "Hack and Slash",
+    "imagen_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/601150/capsule_616x353.jpg?t=1768869803"
+}

@@ -18,3 +18,6 @@ class VistaParaVendedores(APIView):
 
     def post(self, request):
         return Response({"mensaje": "Producto creado por el vendedor"})
+    
+    
+    
