@@ -132,3 +132,14 @@ Authorization: Bearer AQUI_TU_TOKEN
     "genero": "Carreras",
     "imagen_url": "https://res.cloudinary.com/tu-usuario/image/upload/v1234/mariokart.jpg"
 }
+
+### ESTADISTICAS COMPRADOR
+GET http://127.0.0.1:8000/game/estadisticas/comprador/
+Authorization: Bearer 
+### token del comprador
+
+
+### ESTADISTICAS DISTRIBUIDOR
+GET http://127.0.0.1:8000/game/estadisticas/distribuidor/
+Authorization: Bearer
+### token del distribuidor

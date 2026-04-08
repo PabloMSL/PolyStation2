@@ -1,54 +1,87 @@
 from rest_framework.authentication import BaseAuthentication
 from rest_framework.exceptions import AuthenticationFailed
 from firebase_admin import auth
-import firebase_admin
 from principalstation.firebase_config import initialize_firebase
 
 db = initialize_firebase()
 
+
+class FirebaseUser:
+    def __init__(self, uid, rol, email):
+        self.uid = uid
+        self.rol = rol
+        self.email = email
+        self.is_authenticated = True
+        self.is_active = True
+
+    def __str__(self):
+        return self.email
+
+
 class FirebaseAuthentication(BaseAuthentication):
     """
-    Lerr el token JWT del encabezado. Lo va a validar con firebase y va a extraer el UID del usuario
+    Lee el token JWT del encabezado Authorization,
+    lo valida con Firebase y extrae el usuario con su rol real desde Firestore.
+    Compatible con:
+    - perfiles
+    - usuarios
+    - distribuidores
     """
+
     def authenticate(self, request):
-       # Extraemos el token
-       auth_header = request.META.get('HTTP_AUTHORIZATION') or request.headers.get('Authorization')
-       if not auth_header:
-           return None #Si no hay token
-       
-       # El token viene "Bearer <<token>>"
+        auth_header = request.META.get('HTTP_AUTHORIZATION') or request.headers.get('Authorization')
 
-       partes = auth_header.split()
+        if not auth_header:
+            return None
 
-       if len(partes) != 2 or partes[0].lower() != 'bearer':
-           return None
-       
-       token = partes[1]
+        partes = auth_header.split()
 
-       try:
-            # Le pido a firebase que valide la firma del Token
+        if len(partes) != 2 or partes[0].lower() != 'bearer':
+            return None
+
+        token = partes[1]
+
+        try:
             decoded_token = auth.verify_id_token(token)
+
             uid = decoded_token.get('uid')
             email = decoded_token.get('email')
-            user_profile = db.collection('perfiles').document(uid).get()
-            rol = decoded_token.get('rol')
+            rol = decoded_token.get('rol')  # si viene en custom claims
 
+            if not uid:
+                raise AuthenticationFailed("No se encontró el UID en el token")
+
+            # =========================================================
+            # 1) Primero buscar en perfiles (REST API moderna)
+            # =========================================================
             if not rol:
-                user_doc = db.collection('perfiles').document(uid).get()
-                if user_doc.exists:
-                    rol = user_doc.to_dict().get('rol', 'comprador')
-                else:
-                    rol = 'comprador'
-            # Usuario
-            class FirebaseUser:
-               def __init__(self, uid, rol, email):
-                   self.uid = uid
-                   self.rol = rol
-                   self.email = email
-                   self.is_authenticated = True
-                   self.is_active = True
-            
-            return(FirebaseUser(uid, rol, email), decoded_token)
-       except Exception as e:
-           raise AuthenticationFailed(f"Token no es valido o esta expirado: {str(e)}")
-       
+                perfil_doc = db.collection('perfiles').document(uid).get()
+                if perfil_doc.exists:
+                    rol = perfil_doc.to_dict().get('rol')
+
+            # =========================================================
+            # 2) Luego buscar en usuarios (compradores)
+            # =========================================================
+            if not rol:
+                usuario_doc = db.collection('usuarios').document(uid).get()
+                if usuario_doc.exists:
+                    rol = usuario_doc.to_dict().get('rol')
+
+            # =========================================================
+            # 3) Luego buscar en distribuidores
+            # =========================================================
+            if not rol:
+                distribuidor_doc = db.collection('distribuidores').document(uid).get()
+                if distribuidor_doc.exists:
+                    rol = distribuidor_doc.to_dict().get('rol')
+
+            # =========================================================
+            # 4) Si no aparece en ninguna colección
+            # =========================================================
+            if not rol:
+                raise AuthenticationFailed("No se encontró el rol del usuario en Firestore")
+
+            return (FirebaseUser(uid, rol, email), decoded_token)
+
+        except Exception as e:
+            raise AuthenticationFailed(f"Token no válido o expirado: {str(e)}")
