@@ -466,7 +466,7 @@
                                 <div class="game-info">
                                     <span class="game-genre">${juego.genero || 'Aventura'}</span>
                                     <h3>${juego.titulo}</h3>
-                                    <span class="game-price">$${juego.precio}</span>
+                                    <span class="game-price" id="precio-${juego.id}">$${juego.precio}</span>
                                     ${(!userRole || userRole === 'comprador') ? 
                                       `<button class="btn-full" onclick="comprarJuego('${juego.id}')">Comprar</button>` : 
                                       ''}
@@ -502,6 +502,42 @@
                 console.error(e);
             }
         }
+
+        // ============================================
+        // CONEXIÓN WEBSOCKET PARA PRECIOS EN VIVO
+        // ============================================
+        const ws_scheme = window.location.protocol === "https:" ? "wss" : "ws";
+        const priceSocket = new WebSocket(`${ws_scheme}://${window.location.host}/ws/precios/`);
+
+        priceSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            
+            // Buscar si el juego actualizado está visible en el catálogo
+            const precioElement = document.getElementById(`precio-${data.juego_id}`);
+            if (precioElement) {
+                // Actualizar el valor
+                precioElement.innerText = '$' + data.precio;
+                
+                // Efecto visual: Resaltar en rojo brillante por 3 segundos
+                precioElement.style.color = '#ff007a';
+                precioElement.style.transform = 'scale(1.2)';
+                precioElement.style.display = 'inline-block';
+                precioElement.style.transition = 'all 0.5s';
+                
+                setTimeout(() => {
+                    precioElement.style.color = 'white';
+                    precioElement.style.transform = 'scale(1)';
+                }, 3000);
+                
+                // Toast o notificación sencilla (opcional, en consola para no molestar mucho)
+                console.log(`¡Actualización en vivo! ${data.titulo} ha bajado/subido a $${data.precio}`);
+            }
+        };
+
+        priceSocket.onclose = function(e) {
+            console.error('El WebSocket de precios se ha desconectado.');
+        };
+        // ============================================
 
         async function fetchLibrary() {
             try {
