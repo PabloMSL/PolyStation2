@@ -70,13 +70,21 @@ def login_distribuidor(request):
             fb_data = response.json()
 
             if response.status_code == 200:
-                request.session['uid'] = fb_data['localId']
+                uid = fb_data['localId']
+                request.session['uid'] = uid
                 request.session['email'] = fb_data['email']
                 request.session['rol'] = 'distribuidor'
+                
+                # Obtener nombre de la colección
+                user_doc = db.collection('distribuidores').document(uid).get()
+                nombre = user_doc.to_dict().get('nombre', '') if user_doc.exists else ''
+                
                 return JsonResponse({
                     "mensaje": "Login exitoso", 
-                    "uid": fb_data['localId'],
-                    "token": fb_data.get('idToken') # <-- Agregado
+                    "uid": uid,
+                    "token": fb_data.get('idToken'),
+                    "email": fb_data['email'],
+                    "nombre": nombre
                 }, status=200)
             else:
                 return JsonResponse({"error": "Credenciales incorrectas"}, status=401)

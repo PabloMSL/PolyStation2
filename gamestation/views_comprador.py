@@ -84,16 +84,24 @@ def login_comprador(request):
             fb_data = response.json()
 
             if response.status_code == 200:
+                uid = fb_data['localId']
+                
+                # Obtener nombre extra
+                user_doc = db.collection('usuarios').document(uid).get()
+                nombre = user_doc.to_dict().get('nombre', '') if user_doc.exists else ''
+
                 # En una API, solemos devolver el token para que el cliente lo guarde
                 # Pero si usas sesiones de Django, las mantenemos:
-                request.session['uid'] = fb_data['localId']
+                request.session['uid'] = uid
                 request.session['email'] = fb_data['email']
                 request.session['rol'] = 'comprador'
 
                 return JsonResponse({
                     "mensaje": "Login exitoso",
                     "token": fb_data.get('idToken'),
-                    "uid": fb_data['localId']
+                    "uid": uid,
+                    "email": fb_data['email'],
+                    "nombre": nombre
                 }, status=200)
             else:
                 return JsonResponse({"error": "Credenciales inválidas"}, status=401)

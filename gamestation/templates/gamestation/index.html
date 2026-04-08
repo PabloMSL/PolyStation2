@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,7 +55,7 @@
             font-size: 1.5rem;
             font-weight: 800;
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-        
+
             -webkit-text-fill-color: transparent;
             text-decoration: none;
         }
@@ -116,7 +117,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle at center, rgba(0,210,255,0.1) 0%, transparent 60%);
+            background: radial-gradient(circle at center, rgba(0, 210, 255, 0.1) 0%, transparent 60%);
             z-index: 0;
             pointer-events: none;
         }
@@ -163,7 +164,7 @@
 
         .game-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
             border-color: rgba(0, 210, 255, 0.3);
         }
 
@@ -229,7 +230,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(5px);
             z-index: 2000;
             align-items: center;
@@ -243,8 +244,8 @@
             width: 100%;
             max-width: 400px;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .close-btn {
@@ -271,8 +272,8 @@
         .form-group input {
             width: 100%;
             padding: 0.8rem;
-            background: rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
             color: white;
             outline: none;
@@ -285,7 +286,7 @@
         .modal-tabs {
             display: flex;
             margin-bottom: 2rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .modal-tab {
@@ -300,9 +301,9 @@
             color: var(--primary-color);
             border-bottom: 2px solid var(--primary-color);
         }
-
     </style>
 </head>
+
 <body>
 
     <header>
@@ -310,10 +311,11 @@
             <a href="#" class="logo">PolyStation</a>
             <div class="nav-links">
                 <button onclick="showSection('catalog')">Catálogo</button>
-                <button onclick="showSection('library')" id="nav-library" style="display:none;">Mi Biblioteca</button>
-                <button onclick="showSection('dashboard')" id="nav-dashboard" style="display:none;">Dashboard (Dist)</button>
+                <button onclick="window.location.href='/dashboard-comprador/'" id="nav-library" style="display:none;">Dashboard (Comprador)</button>
+                <button onclick="window.location.href='/dashboard-distribuidor/'" id="nav-dashboard" style="display:none;">Dashboard (Distribuidor)</button>
                 <button class="btn-primary" onclick="openModal('loginModal')" id="nav-login">Iniciar Sesión</button>
-                <button class="btn-primary" onclick="logout()" id="nav-logout" style="display:none;">Cerrar Sesión</button>
+                <button class="btn-primary" onclick="logout()" id="nav-logout" style="display:none;">Cerrar
+                    Sesión</button>
             </div>
         </nav>
     </header>
@@ -341,15 +343,16 @@
         <section id="library" class="catalog" style="display:none;">
             <h2 class="section-title">Mi Biblioteca de Juegos</h2>
             <div class="games-grid" id="library-container">
-               <!-- Juegos comprados -->
+                <!-- Juegos comprados -->
             </div>
         </section>
 
         <section id="dashboard" class="catalog" style="display:none;">
             <h2 class="section-title">Dashboard del Distribuidor</h2>
-            <button class="btn-primary" onclick="alert('Funcionalidad de crear juego disponible pronto.')" style="margin-bottom: 1rem;">+ Nuevo Juego</button>
+            <button class="btn-primary" onclick="alert('Funcionalidad de crear juego disponible pronto.')"
+                style="margin-bottom: 1rem;">+ Nuevo Juego</button>
             <div class="games-grid" id="dashboard-container">
-               <!-- Juegos del distribuidor -->
+                <!-- Juegos del distribuidor -->
             </div>
         </section>
     </main>
@@ -358,7 +361,7 @@
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal('loginModal')">&times;</button>
-            
+
             <div class="modal-tabs">
                 <div class="modal-tab active" onclick="switchTab('login')">Login</div>
                 <div class="modal-tab" onclick="switchTab('register')">Registro</div>
@@ -376,7 +379,8 @@
                 </div>
                 <div class="form-group">
                     <label>Tipo de Usuario</label>
-                    <select id="login-role" style="width:100%; padding: 0.8rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white;">
+                    <select id="login-role"
+                        style="width:100%; padding: 0.8rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white;">
                         <option value="comprador">Comprador</option>
                         <option value="distribuidor">Distribuidor</option>
                     </select>
@@ -400,7 +404,8 @@
                 </div>
                 <div class="form-group">
                     <label>Tipo de Cuenta</label>
-                    <select id="reg-role" style="width:100%; padding: 0.8rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white;">
+                    <select id="reg-role"
+                        style="width:100%; padding: 0.8rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white;">
                         <option value="comprador">Comprador</option>
                         <option value="distribuidor">Distribuidor</option>
                     </select>
@@ -426,7 +431,7 @@
             if (token) {
                 document.getElementById('nav-login').style.display = 'none';
                 document.getElementById('nav-logout').style.display = 'block';
-                
+
                 if (userRole === 'distribuidor') {
                     document.getElementById('nav-dashboard').style.display = 'block';
                     document.getElementById('nav-library').style.display = 'none';
@@ -445,12 +450,12 @@
         async function fetchCatalog() {
             try {
                 const response = await fetch(API_URL); // Catalogo
-                if(response.ok) {
+                if (response.ok) {
                     const juegos = await response.json();
                     const container = document.getElementById('games-container');
                     container.innerHTML = '';
-                    
-                    if(juegos.length === 0) {
+
+                    if (juegos.length === 0) {
                         container.innerHTML = '<p style="color: var(--text-muted)">No hay juegos disponibles en este momento.</p>';
                         return;
                     }
@@ -467,9 +472,9 @@
                                     <span class="game-genre">${juego.genero || 'Aventura'}</span>
                                     <h3>${juego.titulo}</h3>
                                     <span class="game-price" id="precio-${juego.id}">$${juego.precio}</span>
-                                    ${(!userRole || userRole === 'comprador') ? 
-                                      `<button class="btn-full" onclick="comprarJuego('${juego.id}')">Comprar</button>` : 
-                                      ''}
+                                    ${(!userRole || userRole === 'comprador') ?
+                                `<button class="btn-full" onclick="comprarJuego('${juego.id}')">Comprar</button>` :
+                                ''}
                                 </div>
                             </div>
                         `;
@@ -492,13 +497,13 @@
                     headers: { 'Content-Type': 'application/json' }
                 });
                 const data = await response.json();
-                if(response.ok) {
+                if (response.ok) {
                     alert('¡Juego comprado con éxito!');
                     fetchLibrary();
                 } else {
                     alert('Error: ' + data.error);
                 }
-            } catch(e) {
+            } catch (e) {
                 console.error(e);
             }
         }
@@ -509,32 +514,32 @@
         const ws_scheme = window.location.protocol === "https:" ? "wss" : "ws";
         const priceSocket = new WebSocket(`${ws_scheme}://${window.location.host}/ws/precios/`);
 
-        priceSocket.onmessage = function(e) {
+        priceSocket.onmessage = function (e) {
             const data = JSON.parse(e.data);
-            
+
             // Buscar si el juego actualizado está visible en el catálogo
             const precioElement = document.getElementById(`precio-${data.juego_id}`);
             if (precioElement) {
                 // Actualizar el valor
                 precioElement.innerText = '$' + data.precio;
-                
+
                 // Efecto visual: Resaltar en rojo brillante por 3 segundos
                 precioElement.style.color = '#ff007a';
                 precioElement.style.transform = 'scale(1.2)';
                 precioElement.style.display = 'inline-block';
                 precioElement.style.transition = 'all 0.5s';
-                
+
                 setTimeout(() => {
                     precioElement.style.color = 'white';
                     precioElement.style.transform = 'scale(1)';
                 }, 3000);
-                
+
                 // Toast o notificación sencilla (opcional, en consola para no molestar mucho)
                 console.log(`¡Actualización en vivo! ${data.titulo} ha bajado/subido a $${data.precio}`);
             }
         };
 
-        priceSocket.onclose = function(e) {
+        priceSocket.onclose = function (e) {
             console.error('El WebSocket de precios se ha desconectado.');
         };
         // ============================================
@@ -544,7 +549,7 @@
                 const response = await fetch(`${API_URL}biblioteca/`, {
                     method: 'GET'
                 });
-                if(response.ok) {
+                if (response.ok) {
                     const juegos = await response.json();
                     const container = document.getElementById('library-container');
                     container.innerHTML = '';
@@ -569,7 +574,7 @@
             const email = document.getElementById('login-email').value;
             const pass = document.getElementById('login-password').value;
             const role = document.getElementById('login-role').value;
-            
+
             const endpoint = role === 'distribuidor' ? 'login-distribuidor/' : 'login/';
 
             try {
@@ -579,24 +584,26 @@
                     body: JSON.stringify({ email: email, password: pass })
                 });
                 const data = await res.json();
-                if(res.ok) {
+                if (res.ok) {
                     token = data.token;
                     userRole = role;
                     localStorage.setItem('token', token);
                     localStorage.setItem('rol', role);
+                    if(data.email) localStorage.setItem('email', data.email);
+                    if(data.nombre) localStorage.setItem('nombre', data.nombre);
                     closeModal('loginModal');
                     updateNav();
                     alert('Sesión iniciada exitosamente');
-                    
-                    if(role === 'comprador') {
-                        fetchLibrary();
+
+                    if (role === 'comprador') {
+                        window.location.href = '/dashboard-comprador/';
                     } else {
-                        // fetch mis-juegos (distribuidor)
+                        window.location.href = '/dashboard-distribuidor/';
                     }
                 } else {
                     alert(data.error || 'Error de credenciales');
                 }
-            } catch(e) {
+            } catch (e) {
                 console.error(e);
             }
         }
@@ -606,7 +613,7 @@
             const email = document.getElementById('reg-email').value;
             const pass = document.getElementById('reg-password').value;
             const role = document.getElementById('reg-role').value;
-            
+
             const endpoint = role === 'distribuidor' ? 'registro-distribuidor/' : 'registro/';
 
             try {
@@ -616,13 +623,13 @@
                     body: JSON.stringify({ username: username, email: email, password: pass })
                 });
                 const data = await res.json();
-                if(res.ok) {
+                if (res.ok) {
                     alert('Registro exitoso. Ahora puedes iniciar sesión.');
                     switchTab('login');
                 } else {
                     alert(data.error || 'Error al registrar');
                 }
-            } catch(e) {
+            } catch (e) {
                 console.error(e);
             }
         }
@@ -641,17 +648,17 @@
         function showSection(sectionId) {
             document.querySelectorAll('main > section').forEach(s => s.style.display = 'none');
             document.getElementById(sectionId).style.display = 'block';
-            
-            if(sectionId === 'catalog') fetchCatalog();
-            if(sectionId === 'library') fetchLibrary();
+
+            if (sectionId === 'catalog') fetchCatalog();
+            if (sectionId === 'library') fetchLibrary();
         }
 
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-        
+
         function switchTab(tab) {
             document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
-            if(tab === 'login') {
+            if (tab === 'login') {
                 document.querySelectorAll('.modal-tab')[0].classList.add('active');
                 document.getElementById('login-form').style.display = 'block';
                 document.getElementById('register-form').style.display = 'none';
@@ -663,4 +670,5 @@
         }
     </script>
 </body>
+
 </html>
