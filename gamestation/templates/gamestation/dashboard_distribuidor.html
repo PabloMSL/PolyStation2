@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,374 +15,834 @@
             --accent: #ff007a;
             --text: #ffffff;
             --muted: #a0aec0;
-            --border: rgba(255,255,255,0.08);
+            --border: rgba(255, 255, 255, 0.08);
             --danger: #e53e3e;
             --success: #38a169;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, sans-serif; }
-        body { background: var(--bg); color: var(--text); min-height: 100vh; }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
 
         /* NAV */
-        header { position: fixed; top: 0; width: 100%; background: rgba(11,15,25,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 100; }
-        nav { max-width: 1300px; margin: 0 auto; padding: 0.9rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.3rem; font-weight: 800; background: linear-gradient(45deg, var(--primary), var(--secondary));  -webkit-text-fill-color: transparent; text-decoration: none; }
-        .nav-right { display: flex; align-items: center; gap: 1rem; }
-        .nav-user { color: var(--muted); font-size: 0.85rem; }
-        .btn { padding: 0.45rem 1.1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
-        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--muted); }
-        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
-        .btn-primary { background: linear-gradient(45deg, var(--primary), var(--secondary)); color: #000; }
-        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(0,210,255,0.3); }
-        .btn-danger { background: transparent; border: 1px solid var(--danger); color: var(--danger); }
-        .btn-danger:hover { background: var(--danger); color: #fff; }
-        .btn-sm { padding: 0.3rem 0.75rem; font-size: 0.78rem; border-radius: 6px; }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0.9rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-user {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .btn {
+            padding: 0.45rem 1.1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--muted);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .btn-danger {
+            background: transparent;
+            border: 1px solid var(--danger);
+            color: var(--danger);
+        }
+
+        .btn-danger:hover {
+            background: var(--danger);
+            color: #fff;
+        }
+
+        .btn-sm {
+            padding: 0.3rem 0.75rem;
+            font-size: 0.78rem;
+            border-radius: 6px;
+        }
 
         /* LAYOUT */
-        .page { padding-top: 70px; max-width: 1300px; margin: 0 auto; }
+        .page {
+            padding-top: 70px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
 
         /* STATS BAR */
-        .stats-section { padding: 2rem 2rem 0; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
-        .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem 1.4rem; position: relative; overflow: hidden; }
-        .stat-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: linear-gradient(180deg, var(--primary), var(--secondary)); }
-        .stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.4rem; }
-        .stat-value { font-size: 1.8rem; font-weight: 700; color: var(--text); }
-        .stat-sub { font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; }
-        .stat-icon { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); font-size: 2rem; opacity: 0.15; }
+        .stats-section {
+            padding: 2rem 2rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.2rem 1.4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.4rem;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .stat-sub {
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 0.3rem;
+        }
+
+        .stat-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            opacity: 0.15;
+        }
 
         /* SECTION HEADER */
-        .section-header { display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; margin-bottom: 1.5rem; }
-        .section-title { font-size: 1.4rem; font-weight: 700; border-left: 3px solid var(--primary); padding-left: 0.8rem; }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            border-left: 3px solid var(--primary);
+            padding-left: 0.8rem;
+        }
 
         /* TABS */
-        .tabs { display: flex; gap: 0.5rem; padding: 0 2rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
-        .tab { padding: 0.6rem 1.2rem; font-size: 0.9rem; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; transition: all 0.2s; background: none; border-top: none; border-left: none; border-right: none; }
-        .tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            color: var(--muted);
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            background: none;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+
+        .tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
 
         /* GAMES TABLE */
-        .table-wrap { padding: 0 2rem 2rem; overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-        thead th { text-align: left; padding: 0.75rem 1rem; color: var(--muted); font-weight: 500; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border); }
-        tbody td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); vertical-align: middle; }
-        tbody tr:hover { background: rgba(255,255,255,0.02); }
-        .game-thumb { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; background: var(--surface2); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
-        .game-thumb img { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; }
-        .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.72rem; font-weight: 600; }
-        .badge-free { background: rgba(56,161,105,0.15); color: #38a169; }
-        .badge-paid { background: rgba(0,210,255,0.12); color: var(--primary); }
-        .actions { display: flex; gap: 0.5rem; }
+        .table-wrap {
+            padding: 0 2rem 2rem;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        thead th {
+            text-align: left;
+            padding: 0.75rem 1rem;
+            color: var(--muted);
+            font-weight: 500;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tbody td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+        }
+
+        tbody tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .game-thumb {
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            object-fit: cover;
+            background: var(--surface2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .game-thumb img {
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+        }
+
+        .badge-free {
+            background: rgba(56, 161, 105, 0.15);
+            color: #38a169;
+        }
+
+        .badge-paid {
+            background: rgba(0, 210, 255, 0.12);
+            color: var(--primary);
+        }
+
+        .actions {
+            display: flex;
+            gap: 0.5rem;
+        }
 
         /* MODAL */
-        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(4px); z-index: 500; align-items: center; justify-content: center; }
-        .modal-overlay.open { display: flex; }
-        .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; width: 100%; max-width: 480px; position: relative; }
-        .modal-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; }
-        .close-x { position: absolute; top: 1rem; right: 1.2rem; font-size: 1.4rem; cursor: pointer; color: var(--muted); background: none; border: none; }
-        .form-group { margin-bottom: 1.2rem; }
-        .form-group label { display: block; font-size: 0.82rem; color: var(--muted); margin-bottom: 0.4rem; }
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%; padding: 0.7rem 0.9rem; background: rgba(0,0,0,0.3);
-            border: 1px solid var(--border); border-radius: 8px; color: var(--text);
-            font-size: 0.9rem; outline: none; transition: border 0.2s;
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 500;
+            align-items: center;
+            justify-content: center;
         }
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--primary); }
-        .form-group textarea { resize: vertical; min-height: 80px; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .modal-footer { display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem; }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 480px;
+            position: relative;
+        }
+
+        .modal-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .close-x {
+            position: absolute;
+            top: 1rem;
+            right: 1.2rem;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--muted);
+            background: none;
+            border: none;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            color: var(--muted);
+            margin-bottom: 0.4rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.7rem 0.9rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 0.9rem;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
 
         /* EMPTY / LOADING */
-        .empty { text-align: center; padding: 4rem 2rem; color: var(--muted); }
-        .empty-icon { font-size: 3rem; margin-bottom: 1rem; }
-        .spinner { width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.7s linear infinite; margin: 2rem auto; }
-        @keyframes spin { to { transform: rotate(360deg); } }
+        .empty {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--muted);
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            margin: 2rem auto;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
 
         /* TOAST */
-        .toast-container { position: fixed; bottom: 2rem; right: 2rem; z-index: 9999; display: flex; flex-direction: column; gap: 0.5rem; }
-        .toast { padding: 0.75rem 1.2rem; border-radius: 8px; font-size: 0.88rem; font-weight: 500; animation: slideIn 0.3s ease; max-width: 320px; }
-        .toast-success { background: #1a3a2a; border: 1px solid #38a169; color: #68d391; }
-        .toast-error { background: #3a1a1a; border: 1px solid var(--danger); color: #fc8181; }
-        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .toast-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .toast {
+            padding: 0.75rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            animation: slideIn 0.3s ease;
+            max-width: 320px;
+        }
+
+        .toast-success {
+            background: #1a3a2a;
+            border: 1px solid #38a169;
+            color: #68d391;
+        }
+
+        .toast-error {
+            background: #3a1a1a;
+            border: 1px solid var(--danger);
+            color: #fc8181;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
 
         /* CONFIRM DIALOG */
-        .confirm-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 600; align-items: center; justify-content: center; }
-        .confirm-overlay.open { display: flex; }
-        .confirm-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; max-width: 360px; width: 100%; text-align: center; }
-        .confirm-box h3 { margin-bottom: 0.5rem; }
-        .confirm-box p { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
-        .confirm-actions { display: flex; gap: 0.75rem; justify-content: center; }
+        .confirm-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 600;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .confirm-overlay.open {
+            display: flex;
+        }
+
+        .confirm-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.8rem;
+            max-width: 360px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .confirm-box h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .confirm-box p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .confirm-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+        }
 
         /* PROFILE SECTION */
-        .profile-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; display: flex; align-items: center; gap: 1.5rem; margin: 0 2rem 2rem; }
-        .avatar { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; color: #000; flex-shrink: 0; }
-        .profile-info h2 { font-size: 1.2rem; margin-bottom: 0.2rem; }
-        .profile-info p { color: var(--muted); font-size: 0.85rem; }
+        .profile-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 0 2rem 2rem;
+        }
+
+        .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #000;
+            flex-shrink: 0;
+        }
+
+        .profile-info h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .profile-info p {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
 
         /* SECTION VISIBILITY */
-        .tab-section { display: none; }
-        .tab-section.active { display: block; }
+        .tab-section {
+            display: none;
+        }
+
+        .tab-section.active {
+            display: block;
+        }
 
         @media (max-width: 768px) {
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .form-row { grid-template-columns: 1fr; }
-            nav { padding: 0.9rem 1rem; }
-            .section-header, .table-wrap, .stats-section { padding-left: 1rem; padding-right: 1rem; }
-            .tabs { padding: 0 1rem; }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 0.9rem 1rem;
+            }
+
+            .section-header,
+            .table-wrap,
+            .stats-section {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .tabs {
+                padding: 0 1rem;
+            }
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <nav>
-        <a href="/game/" class="logo">PolyStation</a>
-        <div class="nav-right">
-            <span class="nav-user" id="nav-email">—</span>
-            <a href="/game/" class="btn btn-outline">Catálogo</a>
-            <button class="btn btn-outline" onclick="logout()">Cerrar sesión</button>
-        </div>
-    </nav>
-</header>
+    <header>
+        <nav>
+            <a href="/" class="logo">PolyStation</a>
+            <div class="nav-right">
+                <span class="nav-user" id="nav-email">—</span>
+                <a href="/" class="btn btn-outline">Catálogo</a>
+                <button class="btn btn-outline" onclick="logout()">Cerrar sesión</button>
+            </div>
+        </nav>
+    </header>
 
-<div class="page">
+    <div class="page">
 
-    <!-- PROFILE -->
-    <div class="stats-section" style="padding-bottom:0;">
-        <div class="profile-card">
-            <div class="avatar" id="avatar-initials">D</div>
-            <div class="profile-info">
-                <h2 id="profile-name">Cargando...</h2>
-                <p id="profile-email">—</p>
-                <p id="profile-empresa" style="color: var(--primary); font-size:0.8rem; margin-top:0.2rem;"></p>
+        <!-- PROFILE -->
+        <div class="stats-section" style="padding-bottom:0;">
+            <div class="profile-card">
+                <div class="avatar" id="avatar-initials">D</div>
+                <div class="profile-info">
+                    <h2 id="profile-name">Cargando...</h2>
+                    <p id="profile-email">—</p>
+                    <p id="profile-empresa" style="color: var(--primary); font-size:0.8rem; margin-top:0.2rem;"></p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- STATS -->
-    <div class="stats-section">
-        <div class="stats-grid" id="stats-grid">
-            <div class="stat-card"><div class="stat-label">Cargando estadísticas...</div><div class="spinner" style="margin:0.5rem 0 0;width:20px;height:20px;border-width:2px;"></div></div>
-        </div>
-    </div>
-
-    <!-- TABS -->
-    <div class="tabs">
-        <button class="tab active" onclick="switchTab('juegos')">Mis juegos</button>
-        <button class="tab" onclick="switchTab('perfil')">Mi perfil</button>
-    </div>
-
-    <!-- TAB: JUEGOS -->
-    <div class="tab-section active" id="tab-juegos">
-        <div class="section-header">
-            <span class="section-title">Juegos publicados</span>
-            <button class="btn btn-primary" onclick="openCrearModal()">+ Nuevo juego</button>
-        </div>
-        <div class="table-wrap">
-            <div id="juegos-loading" class="spinner"></div>
-            <div id="juegos-empty" class="empty" style="display:none;">
-                <div class="empty-icon">🎮</div>
-                <p>Aún no has publicado ningún juego.</p>
-                <button class="btn btn-primary" style="margin-top:1rem;" onclick="openCrearModal()">Publicar mi primer juego</button>
+        <!-- STATS -->
+        <div class="stats-section">
+            <div class="stats-grid" id="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Cargando estadísticas...</div>
+                    <div class="spinner" style="margin:0.5rem 0 0;width:20px;height:20px;border-width:2px;"></div>
+                </div>
             </div>
-            <table id="juegos-table" style="display:none;">
-                <thead>
-                    <tr>
-                        <th>Juego</th>
-                        <th>Género</th>
-                        <th>Precio</th>
-                        <th>Tipo</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="juegos-tbody"></tbody>
-            </table>
         </div>
-    </div>
 
-    <!-- TAB: PERFIL -->
-    <div class="tab-section" id="tab-perfil">
-        <div class="section-header">
-            <span class="section-title">Mi perfil</span>
+        <!-- TABS -->
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('juegos')">Mis juegos</button>
+            <button class="tab" onclick="switchTab('perfil')">Mi perfil</button>
         </div>
-        <div style="padding: 0 2rem 2rem;">
-            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; max-width: 520px;">
-                <form id="perfil-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Nombre</label>
-                            <input type="text" id="p-nombre" placeholder="Tu nombre">
+
+        <!-- TAB: JUEGOS -->
+        <div class="tab-section active" id="tab-juegos">
+            <div class="section-header">
+                <span class="section-title">Juegos publicados</span>
+                <button class="btn btn-primary" onclick="openCrearModal()">+ Nuevo juego</button>
+            </div>
+            <div class="table-wrap">
+                <div id="juegos-loading" class="spinner"></div>
+                <div id="juegos-empty" class="empty" style="display:none;">
+                    <div class="empty-icon">🎮</div>
+                    <p>Aún no has publicado ningún juego.</p>
+                    <button class="btn btn-primary" style="margin-top:1rem;" onclick="openCrearModal()">Publicar mi
+                        primer juego</button>
+                </div>
+                <table id="juegos-table" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>Juego</th>
+                            <th>Género</th>
+                            <th>Precio</th>
+                            <th>Tipo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="juegos-tbody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TAB: PERFIL -->
+        <div class="tab-section" id="tab-perfil">
+            <div class="section-header">
+                <span class="section-title">Mi perfil</span>
+            </div>
+            <div style="padding: 0 2rem 2rem;">
+                <div
+                    style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; max-width: 520px;">
+                    <form id="perfil-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" id="p-nombre" placeholder="Tu nombre">
+                            </div>
+                            <div class="form-group">
+                                <label>Empresa</label>
+                                <input type="text" id="p-empresa" placeholder="Nombre de la empresa">
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label>Empresa</label>
-                            <input type="text" id="p-empresa" placeholder="Nombre de la empresa">
+                            <label>Teléfono</label>
+                            <input type="text" id="p-telefono" placeholder="+57...">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Teléfono</label>
-                        <input type="text" id="p-telefono" placeholder="+57...">
-                    </div>
-                    <div class="form-group">
-                        <label>Email <span style="color:var(--muted); font-size:0.75rem;">(no editable)</span></label>
-                        <input type="email" id="p-email" disabled style="opacity:0.5;">
-                    </div>
-                    <button type="button" class="btn btn-primary" onclick="actualizarPerfil()" style="margin-top:0.5rem;">Guardar cambios</button>
-                </form>
+                        <div class="form-group">
+                            <label>Email <span style="color:var(--muted); font-size:0.75rem;">(no
+                                    editable)</span></label>
+                            <input type="email" id="p-email" disabled style="opacity:0.5;">
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="actualizarPerfil()"
+                            style="margin-top:0.5rem;">Guardar cambios</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- MODAL CREAR / EDITAR -->
-<div class="modal-overlay" id="modal-juego">
-    <div class="modal">
-        <button class="close-x" onclick="closeModal('modal-juego')">&times;</button>
-        <div class="modal-title" id="modal-title">Publicar juego</div>
-        <input type="hidden" id="juego-edit-id">
-        <div class="form-row">
-            <div class="form-group">
-                <label>Título *</label>
-                <input type="text" id="j-titulo" placeholder="Nombre del juego">
+    <!-- MODAL CREAR / EDITAR -->
+    <div class="modal-overlay" id="modal-juego">
+        <div class="modal">
+            <button class="close-x" onclick="closeModal('modal-juego')">&times;</button>
+            <div class="modal-title" id="modal-title">Publicar juego</div>
+            <input type="hidden" id="juego-edit-id">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Título *</label>
+                    <input type="text" id="j-titulo" placeholder="Nombre del juego">
+                </div>
+                <div class="form-group">
+                    <label>Género</label>
+                    <input type="text" id="j-genero" placeholder="Acción, RPG, etc.">
+                </div>
             </div>
             <div class="form-group">
-                <label>Género</label>
-                <input type="text" id="j-genero" placeholder="Acción, RPG, etc.">
+                <label>Descripción</label>
+                <textarea id="j-descripcion" placeholder="Describe tu juego..."></textarea>
             </div>
-        </div>
-        <div class="form-group">
-            <label>Descripción</label>
-            <textarea id="j-descripcion" placeholder="Describe tu juego..."></textarea>
-        </div>
-        <div class="form-row">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Precio (USD)</label>
+                    <input type="number" id="j-precio" placeholder="0.00" step="0.01" min="0">
+                </div>
+                <div class="form-group">
+                    <label>URL imagen (Cloudinary)</label>
+                    <input type="url" id="j-imagen" placeholder="https://...">
+                </div>
+            </div>
             <div class="form-group">
-                <label>Precio (USD)</label>
-                <input type="number" id="j-precio" placeholder="0.00" step="0.01" min="0">
+                <label>Requisitos del sistema</label>
+                <textarea id="j-requisitos" placeholder="CPU, RAM, GPU mínimos..."></textarea>
             </div>
-            <div class="form-group">
-                <label>URL imagen (Cloudinary)</label>
-                <input type="url" id="j-imagen" placeholder="https://...">
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('modal-juego')">Cancelar</button>
+                <button class="btn btn-primary" id="btn-guardar-juego" onclick="guardarJuego()">Publicar</button>
             </div>
-        </div>
-        <div class="form-group">
-            <label>Requisitos del sistema</label>
-            <textarea id="j-requisitos" placeholder="CPU, RAM, GPU mínimos..."></textarea>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-outline" onclick="closeModal('modal-juego')">Cancelar</button>
-            <button class="btn btn-primary" id="btn-guardar-juego" onclick="guardarJuego()">Publicar</button>
         </div>
     </div>
-</div>
 
-<!-- CONFIRM DELETE -->
-<div class="confirm-overlay" id="confirm-delete">
-    <div class="confirm-box">
-        <h3>¿Eliminar juego?</h3>
-        <p>Esta acción no se puede deshacer. El juego será eliminado permanentemente.</p>
-        <div class="confirm-actions">
-            <button class="btn btn-outline" onclick="closeModal('confirm-delete')">Cancelar</button>
-            <button class="btn btn-danger" id="btn-confirm-delete" onclick="confirmarEliminar()">Sí, eliminar</button>
+    <!-- CONFIRM DELETE -->
+    <div class="confirm-overlay" id="confirm-delete">
+        <div class="confirm-box">
+            <h3>¿Eliminar juego?</h3>
+            <p>Esta acción no se puede deshacer. El juego será eliminado permanentemente.</p>
+            <div class="confirm-actions">
+                <button class="btn btn-outline" onclick="closeModal('confirm-delete')">Cancelar</button>
+                <button class="btn btn-danger" id="btn-confirm-delete" onclick="confirmarEliminar()">Sí,
+                    eliminar</button>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- TOASTS -->
-<div class="toast-container" id="toasts"></div>
+    <!-- TOASTS -->
+    <div class="toast-container" id="toasts"></div>
 
-<script>
-    const API = '/game/';
-    const token = localStorage.getItem('token');
-    const rol = localStorage.getItem('rol');
-    let juegoAEliminar = null;
+    <script>
+        const API = '/game/';
+        const token = localStorage.getItem('token');
+        const rol = localStorage.getItem('rol');
+        let juegoAEliminar = null;
 
-    // Auth guard
-    if (!token || rol !== 'distribuidor') {
-        window.location.href = '/game/';
-    }
+        // Auth guard
+        if (!token || rol !== 'distribuidor') {
+            window.location.href = '/';
+        }
 
-    document.getElementById('nav-email').textContent = localStorage.getItem('email') || '—';
+        document.getElementById('nav-email').textContent = localStorage.getItem('email') || '—';
 
-    // ── INIT ──────────────────────────────────────────
-    document.addEventListener('DOMContentLoaded', () => {
-        cargarPerfil();
-        cargarEstadisticas();
-        cargarJuegos();
-    });
-
-    // ── HELPERS ───────────────────────────────────────
-    function toast(msg, type = 'success') {
-        const t = document.createElement('div');
-        t.className = `toast toast-${type}`;
-        t.textContent = msg;
-        document.getElementById('toasts').appendChild(t);
-        setTimeout(() => t.remove(), 3500);
-    }
-
-    function authHeaders() {
-        return { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` };
-    }
-
-    function closeModal(id) {
-        document.getElementById(id).classList.remove('open');
-    }
-
-    function openModal(id) {
-        document.getElementById(id).classList.add('open');
-    }
-
-    function switchTab(name) {
-        document.querySelectorAll('.tab').forEach((t, i) => {
-            t.classList.toggle('active', ['juegos','perfil'][i] === name);
+        // ── INIT ──────────────────────────────────────────
+        document.addEventListener('DOMContentLoaded', () => {
+            cargarPerfil();
+            cargarEstadisticas();
+            cargarJuegos();
         });
-        document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
-        document.getElementById('tab-' + name).classList.add('active');
-    }
 
-    // ── PERFIL ────────────────────────────────────────
-    async function cargarPerfil() {
-        try {
-            const res = await fetch(`${API}dashboard-distribuidor/`, { headers: authHeaders() });
-            if (!res.ok) { if (res.status === 401) logout(); return; }
-            const data = await res.json();
+        // ── HELPERS ───────────────────────────────────────
+        function toast(msg, type = 'success') {
+            const t = document.createElement('div');
+            t.className = `toast toast-${type}`;
+            t.textContent = msg;
+            document.getElementById('toasts').appendChild(t);
+            setTimeout(() => t.remove(), 3500);
+        }
 
-            document.getElementById('profile-name').textContent = data.nombre || 'Sin nombre';
-            document.getElementById('profile-email').textContent = data.email || '—';
-            document.getElementById('profile-empresa').textContent = data.empresa ? `🏢 ${data.empresa}` : '';
-            document.getElementById('avatar-initials').textContent = (data.nombre || 'D')[0].toUpperCase();
-            document.getElementById('nav-email').textContent = data.email || '—';
+        function authHeaders() {
+            return { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` };
+        }
 
-            // Rellenar form perfil
-            document.getElementById('p-nombre').value = data.nombre || '';
-            document.getElementById('p-empresa').value = data.empresa || '';
-            document.getElementById('p-telefono').value = data.telefono || '';
-            document.getElementById('p-email').value = data.email || '';
-        } catch(e) { console.error(e); }
-    }
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('open');
+        }
 
-    async function actualizarPerfil() {
-        const body = {
-            nombre: document.getElementById('p-nombre').value,
-            empresa: document.getElementById('p-empresa').value,
-            telefono: document.getElementById('p-telefono').value,
-        };
-        try {
-            const res = await fetch(`${API}dashboard-distribuidor/actualizar/`, {
-                method: 'PUT',
-                headers: authHeaders(),
-                body: JSON.stringify(body)
+        function openModal(id) {
+            document.getElementById(id).classList.add('open');
+        }
+
+        function switchTab(name) {
+            document.querySelectorAll('.tab').forEach((t, i) => {
+                t.classList.toggle('active', ['juegos', 'perfil'][i] === name);
             });
-            if (res.ok) { toast('Perfil actualizado correctamente'); cargarPerfil(); }
-            else { const d = await res.json(); toast(d.error || 'Error al actualizar', 'error'); }
-        } catch(e) { toast('Error de red', 'error'); }
-    }
+            document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+            document.getElementById('tab-' + name).classList.add('active');
+        }
 
-    // ── ESTADÍSTICAS ──────────────────────────────────
-    async function cargarEstadisticas() {
-        const grid = document.getElementById('stats-grid');
-        try {
-            const res = await fetch(`${API}estadisticas-distribuidor/`, { headers: authHeaders() });
-            if (!res.ok) { grid.innerHTML = '<p style="color:var(--muted)">No se pudieron cargar las estadísticas.</p>'; return; }
-            const s = await res.json();
+        // ── PERFIL ────────────────────────────────────────
+        async function cargarPerfil() {
+            try {
+                const res = await fetch(`${API}dashboard/`, { headers: authHeaders() });
+                if (!res.ok) { if (res.status === 401) logout(); return; }
+                const data = await res.json();
 
-            grid.innerHTML = `
+                document.getElementById('profile-name').textContent = data.nombre || 'Sin nombre';
+                document.getElementById('profile-email').textContent = data.email || '—';
+                document.getElementById('profile-empresa').textContent = data.empresa ? `🏢 ${data.empresa}` : '';
+                document.getElementById('avatar-initials').textContent = (data.nombre || 'D')[0].toUpperCase();
+                document.getElementById('nav-email').textContent = data.email || '—';
+
+                // Rellenar form perfil
+                document.getElementById('p-nombre').value = data.nombre || '';
+                document.getElementById('p-empresa').value = data.empresa || '';
+                document.getElementById('p-telefono').value = data.telefono || '';
+                document.getElementById('p-email').value = data.email || '';
+            } catch (e) { console.error(e); }
+        }
+
+        async function actualizarPerfil() {
+            const body = {
+                nombre: document.getElementById('p-nombre').value,
+                empresa: document.getElementById('p-empresa').value,
+                telefono: document.getElementById('p-telefono').value,
+            };
+            try {
+                const res = await fetch(`${API}dashboard-distribuidor/actualizar/`, {
+                    method: 'PUT',
+                    headers: authHeaders(),
+                    body: JSON.stringify(body)
+                });
+                if (res.ok) { toast('Perfil actualizado correctamente'); cargarPerfil(); }
+                else { const d = await res.json(); toast(d.error || 'Error al actualizar', 'error'); }
+            } catch (e) { toast('Error de red', 'error'); }
+        }
+
+        // ── ESTADÍSTICAS ──────────────────────────────────
+        async function cargarEstadisticas() {
+            const grid = document.getElementById('stats-grid');
+            try {
+                const res = await fetch(`${API}estadisticas-distribuidor/`, { headers: authHeaders() });
+                if (!res.ok) { grid.innerHTML = '<p style="color:var(--muted)">No se pudieron cargar las estadísticas.</p>'; return; }
+                const s = await res.json();
+
+                grid.innerHTML = `
                 <div class="stat-card">
                     <div class="stat-label">Juegos publicados</div>
                     <div class="stat-value">${s.total_juegos_publicados ?? 0}</div>
@@ -407,43 +868,43 @@
                     <div class="stat-icon">📊</div>
                 </div>
             `;
-        } catch(e) {
-            grid.innerHTML = '<p style="color:var(--muted); padding:1rem;">Error al cargar estadísticas.</p>';
+            } catch (e) {
+                grid.innerHTML = '<p style="color:var(--muted); padding:1rem;">Error al cargar estadísticas.</p>';
+            }
         }
-    }
 
-    // ── JUEGOS ────────────────────────────────────────
-    async function cargarJuegos() {
-        const loading = document.getElementById('juegos-loading');
-        const empty = document.getElementById('juegos-empty');
-        const table = document.getElementById('juegos-table');
-        const tbody = document.getElementById('juegos-tbody');
+        // ── JUEGOS ────────────────────────────────────────
+        async function cargarJuegos() {
+            const loading = document.getElementById('juegos-loading');
+            const empty = document.getElementById('juegos-empty');
+            const table = document.getElementById('juegos-table');
+            const tbody = document.getElementById('juegos-tbody');
 
-        loading.style.display = 'block'; empty.style.display = 'none'; table.style.display = 'none';
+            loading.style.display = 'block'; empty.style.display = 'none'; table.style.display = 'none';
 
-        try {
-            const res = await fetch(`${API}mis-juegos/`, { headers: authHeaders() });
-            loading.style.display = 'none';
+            try {
+                const res = await fetch(`${API}mis-juegos/`, { headers: authHeaders() });
+                loading.style.display = 'none';
 
-            if (!res.ok) { if (res.status === 401) logout(); return; }
-            const juegos = await res.json();
+                if (!res.ok) { if (res.status === 401) logout(); return; }
+                const juegos = await res.json();
 
-            if (!juegos.length) { empty.style.display = 'block'; return; }
+                if (!juegos.length) { empty.style.display = 'block'; return; }
 
-            tbody.innerHTML = '';
-            juegos.forEach(j => {
-                const gratis = !j.precio || parseFloat(j.precio) <= 0;
-                const imgCell = j.imagen_url
-                    ? `<div class="game-thumb"><img src="${j.imagen_url}" alt="${j.titulo}"></div>`
-                    : `<div class="game-thumb">🎮</div>`;
-                tbody.innerHTML += `
+                tbody.innerHTML = '';
+                juegos.forEach(j => {
+                    const gratis = !j.precio || parseFloat(j.precio) <= 0;
+                    const imgCell = j.imagen_url
+                        ? `<div class="game-thumb"><img src="${j.imagen_url}" alt="${j.titulo}"></div>`
+                        : `<div class="game-thumb">🎮</div>`;
+                    tbody.innerHTML += `
                     <tr>
                         <td>
                             <div style="display:flex; align-items:center; gap:0.75rem;">
                                 ${imgCell}
                                 <div>
                                     <div style="font-weight:600;">${j.titulo}</div>
-                                    <div style="font-size:0.78rem; color:var(--muted); margin-top:2px;">${j.descripcion ? j.descripcion.substring(0,50)+'…' : '—'}</div>
+                                    <div style="font-size:0.78rem; color:var(--muted); margin-top:2px;">${j.descripcion ? j.descripcion.substring(0, 50) + '…' : '—'}</div>
                                 </div>
                             </div>
                         </td>
@@ -452,105 +913,106 @@
                         <td><span class="badge ${gratis ? 'badge-free' : 'badge-paid'}">${gratis ? 'Gratis' : 'De pago'}</span></td>
                         <td>
                             <div class="actions">
-                                <button class="btn btn-outline btn-sm" onclick="openEditarModal('${j.id}', ${JSON.stringify(j).replace(/"/g,'&quot;')})">Editar</button>
+                                <button class="btn btn-outline btn-sm" onclick="openEditarModal('${j.id}', ${JSON.stringify(j).replace(/"/g, '&quot;')})">Editar</button>
                                 <button class="btn btn-danger btn-sm" onclick="pedirEliminar('${j.id}')">Eliminar</button>
                             </div>
                         </td>
                     </tr>
                 `;
-            });
-            table.style.display = 'table';
-        } catch(e) {
-            loading.style.display = 'none';
-            toast('Error al cargar juegos', 'error');
-        }
-    }
-
-    function openCrearModal() {
-        document.getElementById('modal-title').textContent = 'Publicar juego';
-        document.getElementById('btn-guardar-juego').textContent = 'Publicar';
-        document.getElementById('juego-edit-id').value = '';
-        ['j-titulo','j-genero','j-descripcion','j-precio','j-imagen','j-requisitos'].forEach(id => {
-            document.getElementById(id).value = '';
-        });
-        openModal('modal-juego');
-    }
-
-    function openEditarModal(id, juego) {
-        document.getElementById('modal-title').textContent = 'Editar juego';
-        document.getElementById('btn-guardar-juego').textContent = 'Guardar cambios';
-        document.getElementById('juego-edit-id').value = id;
-        document.getElementById('j-titulo').value = juego.titulo || '';
-        document.getElementById('j-genero').value = juego.genero || '';
-        document.getElementById('j-descripcion').value = juego.descripcion || '';
-        document.getElementById('j-precio').value = juego.precio ?? '';
-        document.getElementById('j-imagen').value = juego.imagen_url || '';
-        document.getElementById('j-requisitos').value = juego.requisitos || '';
-        openModal('modal-juego');
-    }
-
-    async function guardarJuego() {
-        const id = document.getElementById('juego-edit-id').value;
-        const body = {
-            titulo: document.getElementById('j-titulo').value.trim(),
-            genero: document.getElementById('j-genero').value.trim(),
-            descripcion: document.getElementById('j-descripcion').value.trim(),
-            precio: parseFloat(document.getElementById('j-precio').value) || 0,
-            imagen_url: document.getElementById('j-imagen').value.trim(),
-            requisitos: document.getElementById('j-requisitos').value.trim(),
-        };
-        if (!body.titulo) { toast('El título es obligatorio', 'error'); return; }
-
-        const btn = document.getElementById('btn-guardar-juego');
-        btn.disabled = true; btn.textContent = 'Guardando...';
-
-        try {
-            const url = id ? `${API}editar-juego/${id}/` : `${API}crear-juego/`;
-            const method = id ? 'PUT' : 'POST';
-            const res = await fetch(url, { method, headers: authHeaders(), body: JSON.stringify(body) });
-            const data = await res.json();
-
-            if (res.ok) {
-                toast(id ? 'Juego actualizado' : 'Juego publicado');
-                closeModal('modal-juego');
-                cargarJuegos();
-                cargarEstadisticas();
-            } else {
-                toast(data.error || 'Error al guardar', 'error');
+                });
+                table.style.display = 'table';
+            } catch (e) {
+                loading.style.display = 'none';
+                toast('Error al cargar juegos', 'error');
             }
-        } catch(e) { toast('Error de red', 'error'); }
-        finally { btn.disabled = false; btn.textContent = id ? 'Guardar cambios' : 'Publicar'; }
-    }
+        }
 
-    function pedirEliminar(id) {
-        juegoAEliminar = id;
-        openModal('confirm-delete');
-    }
-
-    async function confirmarEliminar() {
-        if (!juegoAEliminar) return;
-        const btn = document.getElementById('btn-confirm-delete');
-        btn.disabled = true; btn.textContent = 'Eliminando...';
-        try {
-            const res = await fetch(`${API}eliminar-juego/${juegoAEliminar}/`, {
-                method: 'DELETE', headers: authHeaders()
+        function openCrearModal() {
+            document.getElementById('modal-title').textContent = 'Publicar juego';
+            document.getElementById('btn-guardar-juego').textContent = 'Publicar';
+            document.getElementById('juego-edit-id').value = '';
+            ['j-titulo', 'j-genero', 'j-descripcion', 'j-precio', 'j-imagen', 'j-requisitos'].forEach(id => {
+                document.getElementById(id).value = '';
             });
-            const data = await res.json();
-            if (res.ok) {
-                toast('Juego eliminado');
-                closeModal('confirm-delete');
-                cargarJuegos();
-                cargarEstadisticas();
-            } else { toast(data.error || 'Error al eliminar', 'error'); }
-        } catch(e) { toast('Error de red', 'error'); }
-        finally { btn.disabled = false; btn.textContent = 'Sí, eliminar'; juegoAEliminar = null; }
-    }
+            openModal('modal-juego');
+        }
 
-    // ── AUTH ──────────────────────────────────────────
-    function logout() {
-        localStorage.clear();
-        window.location.href = '/game/';
-    }
-</script>
+        function openEditarModal(id, juego) {
+            document.getElementById('modal-title').textContent = 'Editar juego';
+            document.getElementById('btn-guardar-juego').textContent = 'Guardar cambios';
+            document.getElementById('juego-edit-id').value = id;
+            document.getElementById('j-titulo').value = juego.titulo || '';
+            document.getElementById('j-genero').value = juego.genero || '';
+            document.getElementById('j-descripcion').value = juego.descripcion || '';
+            document.getElementById('j-precio').value = juego.precio ?? '';
+            document.getElementById('j-imagen').value = juego.imagen_url || '';
+            document.getElementById('j-requisitos').value = juego.requisitos || '';
+            openModal('modal-juego');
+        }
+
+        async function guardarJuego() {
+            const id = document.getElementById('juego-edit-id').value;
+            const body = {
+                titulo: document.getElementById('j-titulo').value.trim(),
+                genero: document.getElementById('j-genero').value.trim(),
+                descripcion: document.getElementById('j-descripcion').value.trim(),
+                precio: parseFloat(document.getElementById('j-precio').value) || 0,
+                imagen_url: document.getElementById('j-imagen').value.trim(),
+                requisitos: document.getElementById('j-requisitos').value.trim(),
+            };
+            if (!body.titulo) { toast('El título es obligatorio', 'error'); return; }
+
+            const btn = document.getElementById('btn-guardar-juego');
+            btn.disabled = true; btn.textContent = 'Guardando...';
+
+            try {
+                const url = id ? `${API}editar-juego/${id}/` : `${API}crear-juego/`;
+                const method = id ? 'PUT' : 'POST';
+                const res = await fetch(url, { method, headers: authHeaders(), body: JSON.stringify(body) });
+                const data = await res.json();
+
+                if (res.ok) {
+                    toast(id ? 'Juego actualizado' : 'Juego publicado');
+                    closeModal('modal-juego');
+                    cargarJuegos();
+                    cargarEstadisticas();
+                } else {
+                    toast(data.error || 'Error al guardar', 'error');
+                }
+            } catch (e) { toast('Error de red', 'error'); }
+            finally { btn.disabled = false; btn.textContent = id ? 'Guardar cambios' : 'Publicar'; }
+        }
+
+        function pedirEliminar(id) {
+            juegoAEliminar = id;
+            openModal('confirm-delete');
+        }
+
+        async function confirmarEliminar() {
+            if (!juegoAEliminar) return;
+            const btn = document.getElementById('btn-confirm-delete');
+            btn.disabled = true; btn.textContent = 'Eliminando...';
+            try {
+                const res = await fetch(`${API}eliminar-juego/${juegoAEliminar}/`, {
+                    method: 'DELETE', headers: authHeaders()
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    toast('Juego eliminado');
+                    closeModal('confirm-delete');
+                    cargarJuegos();
+                    cargarEstadisticas();
+                } else { toast(data.error || 'Error al eliminar', 'error'); }
+            } catch (e) { toast('Error de red', 'error'); }
+            finally { btn.disabled = false; btn.textContent = 'Sí, eliminar'; juegoAEliminar = null; }
+        }
+
+        // ── AUTH ──────────────────────────────────────────
+        function logout() {
+            localStorage.clear();
+            window.location.href = '/';
+        }
+    </script>
 </body>
+
 </html>

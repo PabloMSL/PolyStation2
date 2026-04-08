@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,376 +15,894 @@
             --accent: #ff007a;
             --text: #ffffff;
             --muted: #a0aec0;
-            --border: rgba(255,255,255,0.08);
+            --border: rgba(255, 255, 255, 0.08);
             --danger: #e53e3e;
             --success: #38a169;
             --warn: #d69e2e;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, sans-serif; }
-        body { background: var(--bg); color: var(--text); min-height: 100vh; }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
 
         /* NAV */
-        header { position: fixed; top: 0; width: 100%; background: rgba(11,15,25,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 100; }
-        nav { max-width: 1300px; margin: 0 auto; padding: 0.9rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.3rem; font-weight: 800; background: linear-gradient(45deg, var(--primary), var(--secondary));  -webkit-text-fill-color: transparent; text-decoration: none; }
-        .nav-right { display: flex; align-items: center; gap: 1rem; }
-        .nav-user { color: var(--muted); font-size: 0.85rem; }
-        .btn { padding: 0.45rem 1.1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
-        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--muted); }
-        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
-        .btn-primary { background: linear-gradient(45deg, var(--primary), var(--secondary)); color: #000; }
-        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(0,210,255,0.3); }
-        .btn-danger { background: transparent; border: 1px solid var(--danger); color: var(--danger); }
-        .btn-danger:hover { background: var(--danger); color: #fff; }
-        .btn-sm { padding: 0.3rem 0.75rem; font-size: 0.78rem; border-radius: 6px; }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0.9rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-user {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .btn {
+            padding: 0.45rem 1.1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--muted);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .btn-danger {
+            background: transparent;
+            border: 1px solid var(--danger);
+            color: var(--danger);
+        }
+
+        .btn-danger:hover {
+            background: var(--danger);
+            color: #fff;
+        }
+
+        .btn-sm {
+            padding: 0.3rem 0.75rem;
+            font-size: 0.78rem;
+            border-radius: 6px;
+        }
 
         /* LAYOUT */
-        .page { padding-top: 70px; max-width: 1300px; margin: 0 auto; }
+        .page {
+            padding-top: 70px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
 
         /* PROFILE CARD */
-        .profile-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; display: flex; align-items: center; gap: 1.5rem; margin: 2rem 2rem 0; }
-        .avatar { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #ff6f00); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; color: #fff; flex-shrink: 0; }
-        .profile-info h2 { font-size: 1.2rem; margin-bottom: 0.2rem; }
-        .profile-info p { color: var(--muted); font-size: 0.85rem; }
+        .profile-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 2rem 2rem 0;
+        }
+
+        .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #ff6f00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .profile-info h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .profile-info p {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
 
         /* STATS */
-        .stats-section { padding: 1.5rem 2rem 0; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
-        .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem 1.4rem; position: relative; overflow: hidden; }
-        .stat-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; }
-        .stat-card.c-pink::before { background: linear-gradient(180deg, var(--accent), #ff6f00); }
-        .stat-card.c-blue::before { background: linear-gradient(180deg, var(--primary), var(--secondary)); }
-        .stat-card.c-green::before { background: linear-gradient(180deg, #38a169, #276749); }
-        .stat-card.c-amber::before { background: linear-gradient(180deg, var(--warn), #92400e); }
-        .stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.4rem; }
-        .stat-value { font-size: 1.8rem; font-weight: 700; }
-        .stat-sub { font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; }
-        .stat-icon { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); font-size: 2rem; opacity: 0.15; }
+        .stats-section {
+            padding: 1.5rem 2rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.2rem 1.4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+        }
+
+        .stat-card.c-pink::before {
+            background: linear-gradient(180deg, var(--accent), #ff6f00);
+        }
+
+        .stat-card.c-blue::before {
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+        }
+
+        .stat-card.c-green::before {
+            background: linear-gradient(180deg, #38a169, #276749);
+        }
+
+        .stat-card.c-amber::before {
+            background: linear-gradient(180deg, var(--warn), #92400e);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.4rem;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .stat-sub {
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 0.3rem;
+        }
+
+        .stat-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            opacity: 0.15;
+        }
 
         /* PROGRESS BAR */
-        .progress-bar { height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; margin-top: 0.5rem; }
-        .progress-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--primary), var(--secondary)); transition: width 0.8s ease; }
+        .progress-bar {
+            height: 6px;
+            background: var(--border);
+            border-radius: 99px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 99px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.8s ease;
+        }
 
         /* TABS */
-        .tabs { display: flex; gap: 0.5rem; padding: 0 2rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
-        .tab { padding: 0.6rem 1.2rem; font-size: 0.9rem; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; transition: all 0.2s; background: none; border-top: none; border-left: none; border-right: none; }
-        .tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            color: var(--muted);
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            background: none;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+
+        .tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
 
         /* GAMES GRID */
-        .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.2rem; padding: 0 2rem 2rem; }
-        .game-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: transform 0.2s, border-color 0.2s; }
-        .game-card:hover { transform: translateY(-3px); border-color: rgba(0,210,255,0.3); }
-        .game-img { width: 100%; height: 120px; background: var(--surface2); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
-        .game-img img { width: 100%; height: 100%; object-fit: cover; }
-        .game-body { padding: 1rem; }
-        .game-genre { font-size: 0.72rem; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px; }
-        .game-title { font-weight: 600; margin: 0.3rem 0 0.6rem; font-size: 0.95rem; }
-        .game-price { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.8rem; }
-        .btn-full { width: 100%; padding: 0.6rem; border-radius: 6px; background: rgba(0,210,255,0.1); color: var(--primary); border: 1px solid var(--primary); cursor: pointer; font-weight: 600; font-size: 0.82rem; transition: all 0.2s; }
-        .btn-full:hover { background: var(--primary); color: #000; }
-        .has-review { background: rgba(56,161,105,0.1); border-color: var(--success); color: var(--success); }
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.2rem;
+            padding: 0 2rem 2rem;
+        }
+
+        .game-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(0, 210, 255, 0.3);
+        }
+
+        .game-img {
+            width: 100%;
+            height: 120px;
+            background: var(--surface2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .game-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .game-body {
+            padding: 1rem;
+        }
+
+        .game-genre {
+            font-size: 0.72rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .game-title {
+            font-weight: 600;
+            margin: 0.3rem 0 0.6rem;
+            font-size: 0.95rem;
+        }
+
+        .game-price {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-bottom: 0.8rem;
+        }
+
+        .btn-full {
+            width: 100%;
+            padding: 0.6rem;
+            border-radius: 6px;
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.82rem;
+            transition: all 0.2s;
+        }
+
+        .btn-full:hover {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .has-review {
+            background: rgba(56, 161, 105, 0.1);
+            border-color: var(--success);
+            color: var(--success);
+        }
 
         /* CATALOG SECTION */
-        .catalog-filter { display: flex; gap: 0.75rem; padding: 0 2rem 1rem; flex-wrap: wrap; }
-        .filter-input { padding: 0.5rem 0.9rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 0.85rem; outline: none; }
-        .filter-input:focus { border-color: var(--primary); }
+        .catalog-filter {
+            display: flex;
+            gap: 0.75rem;
+            padding: 0 2rem 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-input {
+            padding: 0.5rem 0.9rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 0.85rem;
+            outline: none;
+        }
+
+        .filter-input:focus {
+            border-color: var(--primary);
+        }
 
         /* RESEÑAS */
-        .resena-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.2rem; }
-        .resena-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.6rem; }
-        .resena-juego { font-weight: 600; font-size: 0.95rem; }
-        .stars { color: var(--warn); font-size: 1rem; }
-        .resena-text { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
-        .resenas-list { display: flex; flex-direction: column; gap: 0.75rem; padding: 0 2rem 2rem; }
+        .resena-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+        }
+
+        .resena-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.6rem;
+        }
+
+        .resena-juego {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .stars {
+            color: var(--warn);
+            font-size: 1rem;
+        }
+
+        .resena-text {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .resenas-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 0 2rem 2rem;
+        }
 
         /* MODAL */
-        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(4px); z-index: 500; align-items: center; justify-content: center; }
-        .modal-overlay.open { display: flex; }
-        .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; width: 100%; max-width: 460px; position: relative; }
-        .modal-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; }
-        .close-x { position: absolute; top: 1rem; right: 1.2rem; font-size: 1.4rem; cursor: pointer; color: var(--muted); background: none; border: none; }
-        .form-group { margin-bottom: 1.2rem; }
-        .form-group label { display: block; font-size: 0.82rem; color: var(--muted); margin-bottom: 0.4rem; }
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%; padding: 0.7rem 0.9rem; background: rgba(0,0,0,0.3);
-            border: 1px solid var(--border); border-radius: 8px; color: var(--text);
-            font-size: 0.9rem; outline: none; transition: border 0.2s;
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 500;
+            align-items: center;
+            justify-content: center;
         }
-        .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); }
-        .form-group textarea { resize: vertical; min-height: 80px; }
-        .modal-footer { display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 460px;
+            position: relative;
+        }
+
+        .modal-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .close-x {
+            position: absolute;
+            top: 1rem;
+            right: 1.2rem;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--muted);
+            background: none;
+            border: none;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            color: var(--muted);
+            margin-bottom: 0.4rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.7rem 0.9rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 0.9rem;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
 
         /* STAR RATING INPUT */
-        .star-input { display: flex; gap: 0.4rem; margin-top: 0.3rem; }
-        .star-input span { font-size: 1.8rem; cursor: pointer; color: var(--border); transition: color 0.15s; user-select: none; }
-        .star-input span.lit { color: var(--warn); }
+        .star-input {
+            display: flex;
+            gap: 0.4rem;
+            margin-top: 0.3rem;
+        }
+
+        .star-input span {
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--border);
+            transition: color 0.15s;
+            user-select: none;
+        }
+
+        .star-input span.lit {
+            color: var(--warn);
+        }
 
         /* EMPTY / LOADING */
-        .empty { text-align: center; padding: 3rem 2rem; color: var(--muted); }
-        .empty-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
-        .spinner { width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.7s linear infinite; margin: 2rem auto; }
-        @keyframes spin { to { transform: rotate(360deg); } }
+        .empty {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--muted);
+        }
+
+        .empty-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            margin: 2rem auto;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
 
         /* TOAST */
-        .toast-container { position: fixed; bottom: 2rem; right: 2rem; z-index: 9999; display: flex; flex-direction: column; gap: 0.5rem; }
-        .toast { padding: 0.75rem 1.2rem; border-radius: 8px; font-size: 0.88rem; font-weight: 500; animation: slideIn 0.3s ease; max-width: 320px; }
-        .toast-success { background: #1a3a2a; border: 1px solid #38a169; color: #68d391; }
-        .toast-error { background: #3a1a1a; border: 1px solid var(--danger); color: #fc8181; }
-        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .toast-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
 
-        .tab-section { display: none; }
-        .tab-section.active { display: block; }
+        .toast {
+            padding: 0.75rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            animation: slideIn 0.3s ease;
+            max-width: 320px;
+        }
+
+        .toast-success {
+            background: #1a3a2a;
+            border: 1px solid #38a169;
+            color: #68d391;
+        }
+
+        .toast-error {
+            background: #3a1a1a;
+            border: 1px solid var(--danger);
+            color: #fc8181;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .tab-section {
+            display: none;
+        }
+
+        .tab-section.active {
+            display: block;
+        }
 
         @media (max-width: 768px) {
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .form-row { grid-template-columns: 1fr; }
-            nav, .stats-section, .games-grid, .catalog-filter, .resenas-list { padding-left: 1rem; padding-right: 1rem; }
-            .tabs { padding: 0 1rem; }
-            .profile-card { margin: 1rem 1rem 0; }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            nav,
+            .stats-section,
+            .games-grid,
+            .catalog-filter,
+            .resenas-list {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .tabs {
+                padding: 0 1rem;
+            }
+
+            .profile-card {
+                margin: 1rem 1rem 0;
+            }
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <nav>
-        <a href="/game/" class="logo">PolyStation</a>
-        <div class="nav-right">
-            <span class="nav-user" id="nav-email">—</span>
-            <a href="/game/" class="btn btn-outline">Catálogo</a>
-            <button class="btn btn-outline" onclick="logout()">Cerrar sesión</button>
-        </div>
-    </nav>
-</header>
+    <header>
+        <nav>
+            <a href="/" class="logo">PolyStation</a>
+            <div class="nav-right">
+                <span class="nav-user" id="nav-email">—</span>
+                <a href="/" class="btn btn-outline">Catálogo</a>
+                <button class="btn btn-outline" onclick="logout()">Cerrar sesión</button>
+            </div>
+        </nav>
+    </header>
 
-<div class="page">
+    <div class="page">
 
-    <!-- PROFILE -->
-    <div class="profile-card">
-        <div class="avatar" id="avatar-initials">U</div>
-        <div class="profile-info">
-            <h2 id="profile-name">Cargando...</h2>
-            <p id="profile-email">—</p>
-            <p style="color: var(--accent); font-size:0.8rem; margin-top:0.3rem;">🎮 Comprador</p>
+        <!-- PROFILE -->
+        <div class="profile-card">
+            <div class="avatar" id="avatar-initials">U</div>
+            <div class="profile-info">
+                <h2 id="profile-name">Cargando...</h2>
+                <p id="profile-email">—</p>
+                <p style="color: var(--accent); font-size:0.8rem; margin-top:0.3rem;">🎮 Comprador</p>
+            </div>
         </div>
-    </div>
 
-    <!-- STATS -->
-    <div class="stats-section">
-        <div class="stats-grid" id="stats-grid">
-            <div class="stat-card c-blue"><div class="stat-label">Cargando...</div><div class="spinner" style="margin:0.4rem 0 0; width:18px; height:18px; border-width:2px;"></div></div>
-        </div>
-    </div>
-
-    <!-- TABS -->
-    <div class="tabs">
-        <button class="tab active" onclick="switchTab('biblioteca')">Mi Biblioteca</button>
-        <button class="tab" onclick="switchTab('catalogo')">Catálogo</button>
-        <button class="tab" onclick="switchTab('resenas')">Mis Reseñas</button>
-        <button class="tab" onclick="switchTab('perfil')">Mi Perfil</button>
-    </div>
-
-    <!-- TAB: BIBLIOTECA -->
-    <div class="tab-section active" id="tab-biblioteca">
-        <div style="padding: 0 2rem 1rem; display:flex; align-items:center; justify-content:space-between;">
-            <span style="color:var(--muted); font-size:0.9rem;" id="lib-count">—</span>
-        </div>
-        <div id="biblioteca-loading" class="spinner"></div>
-        <div id="biblioteca-empty" class="empty" style="display:none;">
-            <div class="empty-icon">📦</div>
-            <p>Tu biblioteca está vacía. ¡Explora el catálogo!</p>
-            <button class="btn btn-primary" style="margin-top:1rem;" onclick="switchTab('catalogo')">Ver catálogo</button>
-        </div>
-        <div class="games-grid" id="biblioteca-grid" style="display:none;"></div>
-    </div>
-
-    <!-- TAB: CATÁLOGO -->
-    <div class="tab-section" id="tab-catalogo">
-        <div class="catalog-filter">
-            <input class="filter-input" type="text" id="search-input" placeholder="Buscar juego..." oninput="filtrarCatalogo()" style="flex:1; min-width:160px;">
-            <input class="filter-input" type="text" id="genre-filter" placeholder="Género..." oninput="filtrarCatalogo()" style="width:140px;">
-            <select class="filter-input" id="price-filter" onchange="filtrarCatalogo()" style="width:140px;">
-                <option value="">Todos los precios</option>
-                <option value="free">Gratis</option>
-                <option value="paid">De pago</option>
-            </select>
-        </div>
-        <div id="catalogo-loading" class="spinner" style="display:none;"></div>
-        <div id="catalogo-empty" class="empty" style="display:none;"><div class="empty-icon">🔍</div><p>Sin resultados para tu búsqueda.</p></div>
-        <div class="games-grid" id="catalogo-grid"></div>
-    </div>
-
-    <!-- TAB: RESEÑAS -->
-    <div class="tab-section" id="tab-resenas">
-        <div style="padding: 0 2rem 1rem;">
-            <p style="color:var(--muted); font-size:0.88rem;">Las reseñas que has dejado en tus juegos.</p>
-        </div>
-        <div id="resenas-loading" class="spinner"></div>
-        <div id="resenas-empty" class="empty" style="display:none;">
-            <div class="empty-icon">✍️</div>
-            <p>Aún no has escrito ninguna reseña.</p>
-        </div>
-        <div class="resenas-list" id="resenas-list" style="display:none;"></div>
-    </div>
-
-    <!-- TAB: PERFIL -->
-    <div class="tab-section" id="tab-perfil">
-        <div style="padding: 0 2rem 2rem;">
-            <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; max-width: 480px;">
-                <div class="form-group">
-                    <label>Nombre de usuario</label>
-                    <input type="text" id="p-nombre" placeholder="Tu nombre">
+        <!-- STATS -->
+        <div class="stats-section">
+            <div class="stats-grid" id="stats-grid">
+                <div class="stat-card c-blue">
+                    <div class="stat-label">Cargando...</div>
+                    <div class="spinner" style="margin:0.4rem 0 0; width:18px; height:18px; border-width:2px;"></div>
                 </div>
-                <div class="form-group">
-                    <label>Email <span style="color:var(--muted); font-size:0.75rem;">(no editable)</span></label>
-                    <input type="email" id="p-email" disabled style="opacity:0.5;">
+            </div>
+        </div>
+
+        <!-- TABS -->
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('biblioteca')">Mi Biblioteca</button>
+            <button class="tab" onclick="switchTab('catalogo')">Catálogo</button>
+            <button class="tab" onclick="switchTab('resenas')">Mis Reseñas</button>
+            <button class="tab" onclick="switchTab('perfil')">Mi Perfil</button>
+        </div>
+
+        <!-- TAB: BIBLIOTECA -->
+        <div class="tab-section active" id="tab-biblioteca">
+            <div style="padding: 0 2rem 1rem; display:flex; align-items:center; justify-content:space-between;">
+                <span style="color:var(--muted); font-size:0.9rem;" id="lib-count">—</span>
+            </div>
+            <div id="biblioteca-loading" class="spinner"></div>
+            <div id="biblioteca-empty" class="empty" style="display:none;">
+                <div class="empty-icon">📦</div>
+                <p>Tu biblioteca está vacía. ¡Explora el catálogo!</p>
+                <button class="btn btn-primary" style="margin-top:1rem;" onclick="switchTab('catalogo')">Ver
+                    catálogo</button>
+            </div>
+            <div class="games-grid" id="biblioteca-grid" style="display:none;"></div>
+        </div>
+
+        <!-- TAB: CATÁLOGO -->
+        <div class="tab-section" id="tab-catalogo">
+            <div class="catalog-filter">
+                <input class="filter-input" type="text" id="search-input" placeholder="Buscar juego..."
+                    oninput="filtrarCatalogo()" style="flex:1; min-width:160px;">
+                <input class="filter-input" type="text" id="genre-filter" placeholder="Género..."
+                    oninput="filtrarCatalogo()" style="width:140px;">
+                <select class="filter-input" id="price-filter" onchange="filtrarCatalogo()" style="width:140px;">
+                    <option value="">Todos los precios</option>
+                    <option value="free">Gratis</option>
+                    <option value="paid">De pago</option>
+                </select>
+            </div>
+            <div id="catalogo-loading" class="spinner" style="display:none;"></div>
+            <div id="catalogo-empty" class="empty" style="display:none;">
+                <div class="empty-icon">🔍</div>
+                <p>Sin resultados para tu búsqueda.</p>
+            </div>
+            <div class="games-grid" id="catalogo-grid"></div>
+        </div>
+
+        <!-- TAB: RESEÑAS -->
+        <div class="tab-section" id="tab-resenas">
+            <div style="padding: 0 2rem 1rem;">
+                <p style="color:var(--muted); font-size:0.88rem;">Las reseñas que has dejado en tus juegos.</p>
+            </div>
+            <div id="resenas-loading" class="spinner"></div>
+            <div id="resenas-empty" class="empty" style="display:none;">
+                <div class="empty-icon">✍️</div>
+                <p>Aún no has escrito ninguna reseña.</p>
+            </div>
+            <div class="resenas-list" id="resenas-list" style="display:none;"></div>
+        </div>
+
+        <!-- TAB: PERFIL -->
+        <div class="tab-section" id="tab-perfil">
+            <div style="padding: 0 2rem 2rem;">
+                <div
+                    style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; max-width: 480px;">
+                    <div class="form-group">
+                        <label>Nombre de usuario</label>
+                        <input type="text" id="p-nombre" placeholder="Tu nombre">
+                    </div>
+                    <div class="form-group">
+                        <label>Email <span style="color:var(--muted); font-size:0.75rem;">(no editable)</span></label>
+                        <input type="email" id="p-email" disabled style="opacity:0.5;">
+                    </div>
+                    <button class="btn btn-primary" onclick="actualizarPerfil()" style="margin-top:0.5rem;">Guardar
+                        cambios</button>
+                    <hr style="border-color: var(--border); margin: 1.5rem 0;">
+                    <div style="color:var(--muted); font-size:0.82rem; margin-bottom:0.8rem;">Zona de peligro</div>
+                    <button class="btn btn-danger" onclick="confirmarEliminarCuenta()"
+                        style="font-size:0.82rem;">Eliminar mi cuenta</button>
                 </div>
-                <button class="btn btn-primary" onclick="actualizarPerfil()" style="margin-top:0.5rem;">Guardar cambios</button>
-                <hr style="border-color: var(--border); margin: 1.5rem 0;">
-                <div style="color:var(--muted); font-size:0.82rem; margin-bottom:0.8rem;">Zona de peligro</div>
-                <button class="btn btn-danger" onclick="confirmarEliminarCuenta()" style="font-size:0.82rem;">Eliminar mi cuenta</button>
             </div>
         </div>
     </div>
-</div>
 
-<!-- MODAL RESEÑA -->
-<div class="modal-overlay" id="modal-resena">
-    <div class="modal">
-        <button class="close-x" onclick="closeModal('modal-resena')">&times;</button>
-        <div class="modal-title">Escribir reseña</div>
-        <input type="hidden" id="resena-juego-id">
-        <div style="color:var(--muted); font-size:0.85rem; margin-bottom:1rem;" id="resena-juego-nombre"></div>
-        <div class="form-group">
-            <label>Calificación</label>
-            <div class="star-input" id="star-input">
-                <span onclick="setEstrellas(1)">★</span>
-                <span onclick="setEstrellas(2)">★</span>
-                <span onclick="setEstrellas(3)">★</span>
-                <span onclick="setEstrellas(4)">★</span>
-                <span onclick="setEstrellas(5)">★</span>
+    <!-- MODAL RESEÑA -->
+    <div class="modal-overlay" id="modal-resena">
+        <div class="modal">
+            <button class="close-x" onclick="closeModal('modal-resena')">&times;</button>
+            <div class="modal-title">Escribir reseña</div>
+            <input type="hidden" id="resena-juego-id">
+            <div style="color:var(--muted); font-size:0.85rem; margin-bottom:1rem;" id="resena-juego-nombre"></div>
+            <div class="form-group">
+                <label>Calificación</label>
+                <div class="star-input" id="star-input">
+                    <span onclick="setEstrellas(1)">★</span>
+                    <span onclick="setEstrellas(2)">★</span>
+                    <span onclick="setEstrellas(3)">★</span>
+                    <span onclick="setEstrellas(4)">★</span>
+                    <span onclick="setEstrellas(5)">★</span>
+                </div>
+                <input type="hidden" id="resena-calificacion" value="0">
             </div>
-            <input type="hidden" id="resena-calificacion" value="0">
-        </div>
-        <div class="form-group">
-            <label>Comentario</label>
-            <textarea id="resena-comentario" placeholder="¿Qué te pareció el juego?"></textarea>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-outline" onclick="closeModal('modal-resena')">Cancelar</button>
-            <button class="btn btn-primary" id="btn-enviar-resena" onclick="enviarResena()">Publicar reseña</button>
-        </div>
-    </div>
-</div>
-
-<!-- MODAL DETALLE JUEGO -->
-<div class="modal-overlay" id="modal-detalle">
-    <div class="modal" style="max-width:520px;">
-        <button class="close-x" onclick="closeModal('modal-detalle')">&times;</button>
-        <div id="detalle-img" style="width:100%; height:160px; background:var(--surface2); border-radius:8px; overflow:hidden; margin-bottom:1.2rem; display:flex; align-items:center; justify-content:center; font-size:3rem;">🎮</div>
-        <div style="font-size:0.8rem; color:var(--primary); text-transform:uppercase; letter-spacing:0.5px;" id="detalle-genero"></div>
-        <h2 id="detalle-titulo" style="margin:0.4rem 0 0.6rem; font-size:1.3rem;"></h2>
-        <p id="detalle-descripcion" style="color:var(--muted); font-size:0.88rem; line-height:1.6; margin-bottom:1rem;"></p>
-        <div id="detalle-requisitos" style="background:var(--surface2); border-radius:8px; padding:0.8rem; font-size:0.82rem; color:var(--muted); margin-bottom:1.2rem;"></div>
-        <div style="display:flex; align-items:center; justify-content:space-between;">
-            <span id="detalle-precio" style="font-size:1.5rem; font-weight:700;"></span>
-            <button class="btn btn-primary" id="btn-comprar-detalle" onclick="comprarDesdeDetalle()">Comprar</button>
+            <div class="form-group">
+                <label>Comentario</label>
+                <textarea id="resena-comentario" placeholder="¿Qué te pareció el juego?"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('modal-resena')">Cancelar</button>
+                <button class="btn btn-primary" id="btn-enviar-resena" onclick="enviarResena()">Publicar reseña</button>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="toast-container" id="toasts"></div>
+    <!-- MODAL DETALLE JUEGO -->
+    <div class="modal-overlay" id="modal-detalle">
+        <div class="modal" style="max-width:520px;">
+            <button class="close-x" onclick="closeModal('modal-detalle')">&times;</button>
+            <div id="detalle-img"
+                style="width:100%; height:160px; background:var(--surface2); border-radius:8px; overflow:hidden; margin-bottom:1.2rem; display:flex; align-items:center; justify-content:center; font-size:3rem;">
+                🎮</div>
+            <div style="font-size:0.8rem; color:var(--primary); text-transform:uppercase; letter-spacing:0.5px;"
+                id="detalle-genero"></div>
+            <h2 id="detalle-titulo" style="margin:0.4rem 0 0.6rem; font-size:1.3rem;"></h2>
+            <p id="detalle-descripcion"
+                style="color:var(--muted); font-size:0.88rem; line-height:1.6; margin-bottom:1rem;"></p>
+            <div id="detalle-requisitos"
+                style="background:var(--surface2); border-radius:8px; padding:0.8rem; font-size:0.82rem; color:var(--muted); margin-bottom:1.2rem;">
+            </div>
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+                <span id="detalle-precio" style="font-size:1.5rem; font-weight:700;"></span>
+                <button class="btn btn-primary" id="btn-comprar-detalle"
+                    onclick="comprarDesdeDetalle()">Comprar</button>
+            </div>
+        </div>
+    </div>
 
-<script>
-    const API = '/game/';
-    const token = localStorage.getItem('token');
-    const rol = localStorage.getItem('rol');
-    let todosLosJuegos = [];
-    let juegoDetalleActual = null;
-    let misJuegosIds = new Set();
-    let estrellasSeleccionadas = 0;
+    <div class="toast-container" id="toasts"></div>
 
-    if (!token) window.location.href = '/game/';
+    <script>
+        const API = '/game/';
+        const token = localStorage.getItem('token');
+        const rol = localStorage.getItem('rol');
+        let todosLosJuegos = [];
+        let juegoDetalleActual = null;
+        let misJuegosIds = new Set();
+        let estrellasSeleccionadas = 0;
 
-    document.getElementById('nav-email').textContent = localStorage.getItem('email') || '—';
+        if (!token) window.location.href = '/';
 
-    document.addEventListener('DOMContentLoaded', () => {
-        cargarPerfil();
-        cargarEstadisticas();
-        cargarBiblioteca();
-        cargarCatalogo();
-    });
+        document.getElementById('nav-email').textContent = localStorage.getItem('email') || '—';
 
-    // ── HELPERS ───────────────────────────────────────
-    function toast(msg, type = 'success') {
-        const t = document.createElement('div');
-        t.className = `toast toast-${type}`;
-        t.textContent = msg;
-        document.getElementById('toasts').appendChild(t);
-        setTimeout(() => t.remove(), 3500);
-    }
+        document.addEventListener('DOMContentLoaded', () => {
+            cargarPerfil();
+            cargarEstadisticas();
+            cargarBiblioteca();
+            cargarCatalogo();
+        });
 
-    function authHeaders() {
-        return { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` };
-    }
-
-    function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-    function openModal(id) { document.getElementById(id).classList.add('open'); }
-
-    function switchTab(name) {
-        const tabs = ['biblioteca','catalogo','resenas','perfil'];
-        document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', tabs[i] === name));
-        document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
-        document.getElementById('tab-' + name).classList.add('active');
-        if (name === 'resenas') cargarResenas();
-    }
-
-    function starsHtml(n) {
-        return '★'.repeat(Math.min(5, Math.max(0, n))) + '☆'.repeat(5 - Math.min(5, n));
-    }
-
-    // ── PERFIL ────────────────────────────────────────
-    async function cargarPerfil() {
-        try {
-            // Intenta leer desde Firestore a través del endpoint de biblioteca (que usa uid de sesión)
-            // O desde un endpoint de perfil si existe. Aquí usamos los datos de sesión como fallback.
-            const email = localStorage.getItem('email') || '—';
-            const nombre = localStorage.getItem('nombre') || email.split('@')[0];
-            document.getElementById('profile-name').textContent = nombre;
-            document.getElementById('profile-email').textContent = email;
-            document.getElementById('avatar-initials').textContent = nombre[0].toUpperCase();
-            document.getElementById('p-nombre').value = nombre;
-            document.getElementById('p-email').value = email;
-        } catch(e) { console.error(e); }
-    }
-
-    function actualizarPerfil() {
-        const nombre = document.getElementById('p-nombre').value.trim();
-        if (!nombre) { toast('El nombre no puede estar vacío', 'error'); return; }
-        localStorage.setItem('nombre', nombre);
-        document.getElementById('profile-name').textContent = nombre;
-        document.getElementById('avatar-initials').textContent = nombre[0].toUpperCase();
-        toast('Perfil actualizado localmente');
-    }
-
-    function confirmarEliminarCuenta() {
-        if (confirm('¿Seguro que deseas eliminar tu cuenta? Esta acción es irreversible.')) {
-            toast('Función de eliminación pendiente de implementar en el backend', 'error');
+        // ── HELPERS ───────────────────────────────────────
+        function toast(msg, type = 'success') {
+            const t = document.createElement('div');
+            t.className = `toast toast-${type}`;
+            t.textContent = msg;
+            document.getElementById('toasts').appendChild(t);
+            setTimeout(() => t.remove(), 3500);
         }
-    }
 
-    // ── ESTADÍSTICAS ──────────────────────────────────
-    async function cargarEstadisticas() {
-        const grid = document.getElementById('stats-grid');
-        try {
-            const res = await fetch(`${API}estadisticas-comprador/`, { headers: authHeaders() });
-            if (!res.ok) { grid.innerHTML = '<p style="color:var(--muted)">No se pudieron cargar las estadísticas.</p>'; return; }
-            const s = await res.json();
+        function authHeaders() {
+            return { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` };
+        }
 
-            const pct = parseInt(s.porcentaje_juegos_resenados) || 0;
+        function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+        function openModal(id) { document.getElementById(id).classList.add('open'); }
 
-            grid.innerHTML = `
+        function switchTab(name) {
+            const tabs = ['biblioteca', 'catalogo', 'resenas', 'perfil'];
+            document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', tabs[i] === name));
+            document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+            document.getElementById('tab-' + name).classList.add('active');
+            if (name === 'resenas') cargarResenas();
+        }
+
+        function starsHtml(n) {
+            return '★'.repeat(Math.min(5, Math.max(0, n))) + '☆'.repeat(5 - Math.min(5, n));
+        }
+
+        // ── PERFIL ────────────────────────────────────────
+        async function cargarPerfil() {
+            try {
+                // Intenta leer desde Firestore a través del endpoint de biblioteca (que usa uid de sesión)
+                // O desde un endpoint de perfil si existe. Aquí usamos los datos de sesión como fallback.
+                const email = localStorage.getItem('email') || '—';
+                const nombre = localStorage.getItem('nombre') || email.split('@')[0];
+                document.getElementById('profile-name').textContent = nombre;
+                document.getElementById('profile-email').textContent = email;
+                document.getElementById('avatar-initials').textContent = nombre[0].toUpperCase();
+                document.getElementById('p-nombre').value = nombre;
+                document.getElementById('p-email').value = email;
+            } catch (e) { console.error(e); }
+        }
+
+        function actualizarPerfil() {
+            const nombre = document.getElementById('p-nombre').value.trim();
+            if (!nombre) { toast('El nombre no puede estar vacío', 'error'); return; }
+            localStorage.setItem('nombre', nombre);
+            document.getElementById('profile-name').textContent = nombre;
+            document.getElementById('avatar-initials').textContent = nombre[0].toUpperCase();
+            toast('Perfil actualizado localmente');
+        }
+
+        function confirmarEliminarCuenta() {
+            if (confirm('¿Seguro que deseas eliminar tu cuenta? Esta acción es irreversible.')) {
+                toast('Función de eliminación pendiente de implementar en el backend', 'error');
+            }
+        }
+
+        // ── ESTADÍSTICAS ──────────────────────────────────
+        async function cargarEstadisticas() {
+            const grid = document.getElementById('stats-grid');
+            try {
+                const res = await fetch(`${API}estadisticas-comprador/`, { headers: authHeaders() });
+                if (!res.ok) { grid.innerHTML = '<p style="color:var(--muted)">No se pudieron cargar las estadísticas.</p>'; return; }
+                const s = await res.json();
+
+                const pct = parseInt(s.porcentaje_juegos_resenados) || 0;
+
+                grid.innerHTML = `
                 <div class="stat-card c-blue">
                     <div class="stat-label">Compras totales</div>
                     <div class="stat-value">${s.total_compras ?? 0}</div>
@@ -412,177 +931,177 @@
                     <div class="stat-icon">⭐</div>
                 </div>
             `;
-        } catch(e) {
-            grid.innerHTML = '<p style="color:var(--muted); padding:1rem;">Error al cargar estadísticas.</p>';
+            } catch (e) {
+                grid.innerHTML = '<p style="color:var(--muted); padding:1rem;">Error al cargar estadísticas.</p>';
+            }
         }
-    }
 
-    // ── BIBLIOTECA ────────────────────────────────────
-    async function cargarBiblioteca() {
-        const loading = document.getElementById('biblioteca-loading');
-        const empty = document.getElementById('biblioteca-empty');
-        const grid = document.getElementById('biblioteca-grid');
+        // ── BIBLIOTECA ────────────────────────────────────
+        async function cargarBiblioteca() {
+            const loading = document.getElementById('biblioteca-loading');
+            const empty = document.getElementById('biblioteca-empty');
+            const grid = document.getElementById('biblioteca-grid');
 
-        loading.style.display = 'block'; empty.style.display = 'none'; grid.style.display = 'none';
+            loading.style.display = 'block'; empty.style.display = 'none'; grid.style.display = 'none';
 
-        try {
-            const res = await fetch(`${API}biblioteca/`, { headers: authHeaders() });
-            loading.style.display = 'none';
+            try {
+                const res = await fetch(`${API}biblioteca/`, { headers: authHeaders() });
+                loading.style.display = 'none';
 
-            if (!res.ok) { if (res.status === 401) logout(); return; }
-            const juegos = await res.json();
+                if (!res.ok) { if (res.status === 401) logout(); return; }
+                const juegos = await res.json();
 
-            juegos.forEach(j => misJuegosIds.add(j.juego_id || j.id));
-            document.getElementById('lib-count').textContent = `${juegos.length} juego${juegos.length !== 1 ? 's' : ''} en tu biblioteca`;
+                juegos.forEach(j => misJuegosIds.add(j.juego_id || j.id));
+                document.getElementById('lib-count').textContent = `${juegos.length} juego${juegos.length !== 1 ? 's' : ''} en tu biblioteca`;
 
-            if (!juegos.length) { empty.style.display = 'block'; return; }
+                if (!juegos.length) { empty.style.display = 'block'; return; }
 
-            grid.innerHTML = '';
-            juegos.forEach(j => {
-                grid.innerHTML += `
+                grid.innerHTML = '';
+                juegos.forEach(j => {
+                    grid.innerHTML += `
                     <div class="game-card">
                         <div class="game-img">${j.imagen_url ? `<img src="${j.imagen_url}" alt="${j.titulo}">` : '🕹️'}</div>
                         <div class="game-body">
                             <div class="game-title">${j.titulo || 'Sin título'}</div>
                             <div class="game-price">Adquirido · $${parseFloat(j.precio || 0).toFixed(2)}</div>
-                            <button class="btn-full" onclick="abrirModalResena('${j.juego_id || j.id}', '${(j.titulo||'').replace(/'/g,"\\'")}')">
+                            <button class="btn-full" onclick="abrirModalResena('${j.juego_id || j.id}', '${(j.titulo || '').replace(/'/g, "\\'")}')">
                                 ✍️ Dejar reseña
                             </button>
                         </div>
                     </div>
                 `;
-            });
-            grid.style.display = 'grid';
-        } catch(e) {
-            loading.style.display = 'none';
-            toast('Error al cargar la biblioteca', 'error');
+                });
+                grid.style.display = 'grid';
+            } catch (e) {
+                loading.style.display = 'none';
+                toast('Error al cargar la biblioteca', 'error');
+            }
         }
-    }
 
-    // ── CATÁLOGO ──────────────────────────────────────
-    async function cargarCatalogo() {
-        document.getElementById('catalogo-loading').style.display = 'block';
-        try {
-            const res = await fetch(`${API}`);
-            document.getElementById('catalogo-loading').style.display = 'none';
-            if (!res.ok) return;
-            todosLosJuegos = await res.json();
-            renderCatalogo(todosLosJuegos);
-        } catch(e) {
-            document.getElementById('catalogo-loading').style.display = 'none';
+        // ── CATÁLOGO ──────────────────────────────────────
+        async function cargarCatalogo() {
+            document.getElementById('catalogo-loading').style.display = 'block';
+            try {
+                const res = await fetch(`${API}`);
+                document.getElementById('catalogo-loading').style.display = 'none';
+                if (!res.ok) return;
+                todosLosJuegos = await res.json();
+                renderCatalogo(todosLosJuegos);
+            } catch (e) {
+                document.getElementById('catalogo-loading').style.display = 'none';
+            }
         }
-    }
 
-    function renderCatalogo(juegos) {
-        const grid = document.getElementById('catalogo-grid');
-        const empty = document.getElementById('catalogo-empty');
-        grid.innerHTML = '';
+        function renderCatalogo(juegos) {
+            const grid = document.getElementById('catalogo-grid');
+            const empty = document.getElementById('catalogo-empty');
+            grid.innerHTML = '';
 
-        if (!juegos.length) { empty.style.display = 'block'; return; }
-        empty.style.display = 'none';
+            if (!juegos.length) { empty.style.display = 'block'; return; }
+            empty.style.display = 'none';
 
-        juegos.forEach(j => {
-            const yaComprado = misJuegosIds.has(j.id);
-            const gratis = !j.precio || parseFloat(j.precio) <= 0;
-            grid.innerHTML += `
+            juegos.forEach(j => {
+                const yaComprado = misJuegosIds.has(j.id);
+                const gratis = !j.precio || parseFloat(j.precio) <= 0;
+                grid.innerHTML += `
                 <div class="game-card">
                     <div class="game-img">${j.imagen_url ? `<img src="${j.imagen_url}" alt="${j.titulo}">` : '🎮'}</div>
                     <div class="game-body">
                         <div class="game-genre">${j.genero || 'Juego'}</div>
                         <div class="game-title">${j.titulo}</div>
                         <div class="game-price">${gratis ? 'Gratis' : '$' + parseFloat(j.precio).toFixed(2)}</div>
-                        <button class="btn-full" style="margin-bottom:0.5rem;" onclick="abrirDetalle(${JSON.stringify(j).replace(/"/g,'&quot;')})">Ver detalles</button>
+                        <button class="btn-full" style="margin-bottom:0.5rem;" onclick="abrirDetalle(${JSON.stringify(j).replace(/"/g, '&quot;')})">Ver detalles</button>
                         ${yaComprado
-                            ? `<button class="btn-full has-review" disabled>✓ En tu biblioteca</button>`
-                            : `<button class="btn-full" onclick="comprarJuego('${j.id}')">Comprar</button>`
-                        }
+                        ? `<button class="btn-full has-review" disabled>✓ En tu biblioteca</button>`
+                        : `<button class="btn-full" onclick="comprarJuego('${j.id}')">Comprar</button>`
+                    }
                     </div>
                 </div>
             `;
-        });
-    }
-
-    function filtrarCatalogo() {
-        const q = document.getElementById('search-input').value.toLowerCase();
-        const g = document.getElementById('genre-filter').value.toLowerCase();
-        const p = document.getElementById('price-filter').value;
-
-        const filtrados = todosLosJuegos.filter(j => {
-            const matchTitle = j.titulo.toLowerCase().includes(q);
-            const matchGenre = !g || (j.genero || '').toLowerCase().includes(g);
-            const gratis = !j.precio || parseFloat(j.precio) <= 0;
-            const matchPrice = !p || (p === 'free' && gratis) || (p === 'paid' && !gratis);
-            return matchTitle && matchGenre && matchPrice;
-        });
-        renderCatalogo(filtrados);
-    }
-
-    function abrirDetalle(juego) {
-        juegoDetalleActual = juego;
-        const imgDiv = document.getElementById('detalle-img');
-        imgDiv.innerHTML = juego.imagen_url ? `<img src="${juego.imagen_url}" style="width:100%; height:100%; object-fit:cover;">` : '🎮';
-        document.getElementById('detalle-genero').textContent = juego.genero || '';
-        document.getElementById('detalle-titulo').textContent = juego.titulo;
-        document.getElementById('detalle-descripcion').textContent = juego.descripcion || 'Sin descripción disponible.';
-        document.getElementById('detalle-requisitos').textContent = juego.requisitos ? '⚙️ Requisitos: ' + juego.requisitos : '';
-        document.getElementById('detalle-precio').textContent = !juego.precio || parseFloat(juego.precio) <= 0 ? 'Gratis' : '$' + parseFloat(juego.precio).toFixed(2);
-
-        const btnComprar = document.getElementById('btn-comprar-detalle');
-        if (misJuegosIds.has(juego.id)) {
-            btnComprar.textContent = '✓ En biblioteca';
-            btnComprar.disabled = true;
-        } else {
-            btnComprar.textContent = 'Comprar';
-            btnComprar.disabled = false;
+            });
         }
-        openModal('modal-detalle');
-    }
 
-    async function comprarDesdeDetalle() {
-        if (!juegoDetalleActual) return;
-        await comprarJuego(juegoDetalleActual.id);
-        closeModal('modal-detalle');
-    }
+        function filtrarCatalogo() {
+            const q = document.getElementById('search-input').value.toLowerCase();
+            const g = document.getElementById('genre-filter').value.toLowerCase();
+            const p = document.getElementById('price-filter').value;
 
-    async function comprarJuego(id) {
-        if (!token) { toast('Debes iniciar sesión', 'error'); return; }
-        try {
-            const res = await fetch(`${API}comprar/${id}/`, { method: 'POST', headers: authHeaders() });
-            const data = await res.json();
-            if (res.ok) {
-                toast('¡Juego adquirido con éxito! 🎉');
-                misJuegosIds.add(id);
-                cargarBiblioteca();
-                cargarEstadisticas();
-                renderCatalogo(todosLosJuegos);
-            } else { toast(data.error || 'Error al comprar', 'error'); }
-        } catch(e) { toast('Error de red', 'error'); }
-    }
+            const filtrados = todosLosJuegos.filter(j => {
+                const matchTitle = j.titulo.toLowerCase().includes(q);
+                const matchGenre = !g || (j.genero || '').toLowerCase().includes(g);
+                const gratis = !j.precio || parseFloat(j.precio) <= 0;
+                const matchPrice = !p || (p === 'free' && gratis) || (p === 'paid' && !gratis);
+                return matchTitle && matchGenre && matchPrice;
+            });
+            renderCatalogo(filtrados);
+        }
 
-    // ── RESEÑAS ───────────────────────────────────────
-    async function cargarResenas() {
-        const loading = document.getElementById('resenas-loading');
-        const empty = document.getElementById('resenas-empty');
-        const list = document.getElementById('resenas-list');
+        function abrirDetalle(juego) {
+            juegoDetalleActual = juego;
+            const imgDiv = document.getElementById('detalle-img');
+            imgDiv.innerHTML = juego.imagen_url ? `<img src="${juego.imagen_url}" style="width:100%; height:100%; object-fit:cover;">` : '🎮';
+            document.getElementById('detalle-genero').textContent = juego.genero || '';
+            document.getElementById('detalle-titulo').textContent = juego.titulo;
+            document.getElementById('detalle-descripcion').textContent = juego.descripcion || 'Sin descripción disponible.';
+            document.getElementById('detalle-requisitos').textContent = juego.requisitos ? '⚙️ Requisitos: ' + juego.requisitos : '';
+            document.getElementById('detalle-precio').textContent = !juego.precio || parseFloat(juego.precio) <= 0 ? 'Gratis' : '$' + parseFloat(juego.precio).toFixed(2);
 
-        loading.style.display = 'block'; empty.style.display = 'none'; list.style.display = 'none';
-
-        try {
-            // Endpoint de reseñas del usuario — ajusta si existe uno específico
-            const res = await fetch(`${API}mis-resenas/`, { headers: authHeaders() });
-            loading.style.display = 'none';
-
-            if (!res.ok) {
-                // Endpoint puede no existir aún — mostrar vacío sin error de UX
-                empty.style.display = 'block'; return;
+            const btnComprar = document.getElementById('btn-comprar-detalle');
+            if (misJuegosIds.has(juego.id)) {
+                btnComprar.textContent = '✓ En biblioteca';
+                btnComprar.disabled = true;
+            } else {
+                btnComprar.textContent = 'Comprar';
+                btnComprar.disabled = false;
             }
-            const resenas = await res.json();
+            openModal('modal-detalle');
+        }
 
-            if (!resenas.length) { empty.style.display = 'block'; return; }
+        async function comprarDesdeDetalle() {
+            if (!juegoDetalleActual) return;
+            await comprarJuego(juegoDetalleActual.id);
+            closeModal('modal-detalle');
+        }
 
-            list.innerHTML = '';
-            resenas.forEach(r => {
-                list.innerHTML += `
+        async function comprarJuego(id) {
+            if (!token) { toast('Debes iniciar sesión', 'error'); return; }
+            try {
+                const res = await fetch(`${API}comprar/${id}/`, { method: 'POST', headers: authHeaders() });
+                const data = await res.json();
+                if (res.ok) {
+                    toast('¡Juego adquirido con éxito! 🎉');
+                    misJuegosIds.add(id);
+                    cargarBiblioteca();
+                    cargarEstadisticas();
+                    renderCatalogo(todosLosJuegos);
+                } else { toast(data.error || 'Error al comprar', 'error'); }
+            } catch (e) { toast('Error de red', 'error'); }
+        }
+
+        // ── RESEÑAS ───────────────────────────────────────
+        async function cargarResenas() {
+            const loading = document.getElementById('resenas-loading');
+            const empty = document.getElementById('resenas-empty');
+            const list = document.getElementById('resenas-list');
+
+            loading.style.display = 'block'; empty.style.display = 'none'; list.style.display = 'none';
+
+            try {
+                // Endpoint de reseñas del usuario — ajusta si existe uno específico
+                const res = await fetch(`${API}mis-resenas/`, { headers: authHeaders() });
+                loading.style.display = 'none';
+
+                if (!res.ok) {
+                    // Endpoint puede no existir aún — mostrar vacío sin error de UX
+                    empty.style.display = 'block'; return;
+                }
+                const resenas = await res.json();
+
+                if (!resenas.length) { empty.style.display = 'block'; return; }
+
+                list.innerHTML = '';
+                resenas.forEach(r => {
+                    list.innerHTML += `
                     <div class="resena-card">
                         <div class="resena-header">
                             <div class="resena-juego">${r.titulo || r.juego_id}</div>
@@ -591,62 +1110,63 @@
                         <div class="resena-text">${r.comentario || '—'}</div>
                     </div>
                 `;
-            });
-            list.style.display = 'flex';
-        } catch(e) {
-            loading.style.display = 'none';
-            empty.style.display = 'block';
+                });
+                list.style.display = 'flex';
+            } catch (e) {
+                loading.style.display = 'none';
+                empty.style.display = 'block';
+            }
         }
-    }
 
-    function abrirModalResena(juegoId, juegoNombre) {
-        document.getElementById('resena-juego-id').value = juegoId;
-        document.getElementById('resena-juego-nombre').textContent = juegoNombre;
-        document.getElementById('resena-comentario').value = '';
-        setEstrellas(0);
-        openModal('modal-resena');
-    }
+        function abrirModalResena(juegoId, juegoNombre) {
+            document.getElementById('resena-juego-id').value = juegoId;
+            document.getElementById('resena-juego-nombre').textContent = juegoNombre;
+            document.getElementById('resena-comentario').value = '';
+            setEstrellas(0);
+            openModal('modal-resena');
+        }
 
-    function setEstrellas(n) {
-        estrellasSeleccionadas = n;
-        document.getElementById('resena-calificacion').value = n;
-        document.querySelectorAll('#star-input span').forEach((s, i) => {
-            s.classList.toggle('lit', i < n);
-        });
-    }
-
-    async function enviarResena() {
-        const juegoId = document.getElementById('resena-juego-id').value;
-        const cal = parseInt(document.getElementById('resena-calificacion').value) || 0;
-        const com = document.getElementById('resena-comentario').value.trim();
-
-        if (!cal) { toast('Selecciona una calificación', 'error'); return; }
-        if (!com) { toast('Escribe un comentario', 'error'); return; }
-
-        const btn = document.getElementById('btn-enviar-resena');
-        btn.disabled = true; btn.textContent = 'Publicando...';
-
-        try {
-            const res = await fetch(`${API}resena/${juegoId}/`, {
-                method: 'POST',
-                headers: authHeaders(),
-                body: JSON.stringify({ calificacion: cal, comentario: com })
+        function setEstrellas(n) {
+            estrellasSeleccionadas = n;
+            document.getElementById('resena-calificacion').value = n;
+            document.querySelectorAll('#star-input span').forEach((s, i) => {
+                s.classList.toggle('lit', i < n);
             });
-            const data = await res.json();
-            if (res.ok) {
-                toast('Reseña publicada 🌟');
-                closeModal('modal-resena');
-                cargarEstadisticas();
-            } else { toast(data.error || 'Error al publicar reseña', 'error'); }
-        } catch(e) { toast('Error de red', 'error'); }
-        finally { btn.disabled = false; btn.textContent = 'Publicar reseña'; }
-    }
+        }
 
-    // ── AUTH ──────────────────────────────────────────
-    function logout() {
-        localStorage.clear();
-        window.location.href = '/game/';
-    }
-</script>
+        async function enviarResena() {
+            const juegoId = document.getElementById('resena-juego-id').value;
+            const cal = parseInt(document.getElementById('resena-calificacion').value) || 0;
+            const com = document.getElementById('resena-comentario').value.trim();
+
+            if (!cal) { toast('Selecciona una calificación', 'error'); return; }
+            if (!com) { toast('Escribe un comentario', 'error'); return; }
+
+            const btn = document.getElementById('btn-enviar-resena');
+            btn.disabled = true; btn.textContent = 'Publicando...';
+
+            try {
+                const res = await fetch(`${API}resena/${juegoId}/`, {
+                    method: 'POST',
+                    headers: authHeaders(),
+                    body: JSON.stringify({ calificacion: cal, comentario: com })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    toast('Reseña publicada 🌟');
+                    closeModal('modal-resena');
+                    cargarEstadisticas();
+                } else { toast(data.error || 'Error al publicar reseña', 'error'); }
+            } catch (e) { toast('Error de red', 'error'); }
+            finally { btn.disabled = false; btn.textContent = 'Publicar reseña'; }
+        }
+
+        // ── AUTH ──────────────────────────────────────────
+        function logout() {
+            localStorage.clear();
+            window.location.href = '/';
+        }
+    </script>
 </body>
+
 </html>
