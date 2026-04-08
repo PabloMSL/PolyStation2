@@ -86,7 +86,7 @@ Authorization: Bearer
 {
     "titulo": "DeadLock",
     "descripcion": "Un juego de disparos y MOBA",
-    "precio": 0,
+    "precio": 10,
     "genero": "MOBA"
 }
  
@@ -132,3 +132,14 @@ Authorization: Bearer AQUI_TU_TOKEN
     "genero": "Hack and Slash",
     "imagen_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/601150/capsule_616x353.jpg?t=1768869803"
 }
+
+### ESTADISTICAS COMPRADOR
+GET http://127.0.0.1:8000/game/estadisticas/comprador/
+Authorization: Bearer 
+### token del comprador
+
+
+### ESTADISTICAS DISTRIBUIDOR
+GET http://127.0.0.1:8000/game/estadisticas/distribuidor/
+Authorization: Bearer 
+### token del distribuidor
