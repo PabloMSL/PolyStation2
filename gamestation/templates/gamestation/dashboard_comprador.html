@@ -823,7 +823,7 @@
         let misJuegosIds = new Set();
         let estrellasSeleccionadas = 0;
 
-        if (!token) window.location.href = '/game/';
+        if (!token) window.location.href = '/';
 
         document.getElementById('nav-email').textContent = localStorage.getItem('email') || '—';
 
@@ -1164,7 +1164,7 @@
         // ── AUTH ──────────────────────────────────────────
         function logout() {
             localStorage.clear();
-            window.location.href = '/game/';
+            window.location.href = '/';
         }
     </script>
 </body>

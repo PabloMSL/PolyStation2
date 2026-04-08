@@ -755,7 +755,7 @@
 
         // Auth guard
         if (!token || rol !== 'distribuidor') {
-            window.location.href = '/game/';
+            window.location.href = '/';
         }
 
         document.getElementById('nav-email').textContent = localStorage.getItem('email') || '—';
@@ -1010,7 +1010,7 @@
         // ── AUTH ──────────────────────────────────────────
         function logout() {
             localStorage.clear();
-            window.location.href = '/game/';
+            window.location.href = '/';
         }
     </script>
 </body>
