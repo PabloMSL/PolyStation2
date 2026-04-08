@@ -86,7 +86,7 @@ Authorization: Bearer
 {
     "titulo": "DeadLock",
     "descripcion": "Un juego de disparos y MOBA",
-    "precio": 10,
+    "precio": 0,
     "genero": "MOBA"
 }
  
