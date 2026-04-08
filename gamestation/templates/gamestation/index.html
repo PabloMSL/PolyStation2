@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PolyStation - Tienda de Videojuegos</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --surface-color: #1a1f2e;
+            --primary-color: #00d2ff;
+            --secondary-color: #3a7bd5;
+            --text-main: #ffffff;
+            --text-muted: #a0aec0;
+            --accent: #ff007a;
+            --nav-bg: rgba(11, 15, 25, 0.8);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links button {
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav-links button:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+        }
+
+        main {
+            padding-top: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: radial-gradient(circle at center, var(--surface-color) 0%, var(--bg-color) 100%);
+            border-radius: 20px;
+            margin: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(0,210,255,0.1) 0%, transparent 60%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .catalog {
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .game-card {
+            background: var(--surface-color);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            border-color: rgba(0, 210, 255, 0.3);
+        }
+
+        .game-image {
+            width: 100%;
+            height: 160px;
+            background: #2a3143;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 3rem;
+        }
+
+        .game-info {
+            padding: 1.5rem;
+        }
+
+        .game-info h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .game-genre {
+            color: var(--primary-color);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .game-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .btn-full {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 8px;
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn-full:hover {
+            background: var(--primary-color);
+            color: #000;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--surface-color);
+            padding: 3rem;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            border: none;
+            background: transparent;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: white;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .modal-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .modal-tab {
+            flex: 1;
+            text-align: center;
+            padding: 0.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .modal-tab.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">PolyStation</a>
+            <div class="nav-links">
+                <button onclick="showSection('catalog')">Catálogo</button>
+                <button onclick="showSection('library')" id="nav-library" style="display:none;">Mi Biblioteca</button>
+                <button onclick="showSection('dashboard')" id="nav-dashboard" style="display:none;">Dashboard (Dist)</button>
+                <button class="btn-primary" onclick="openModal('loginModal')" id="nav-login">Iniciar Sesión</button>
+                <button class="btn-primary" onclick="logout()" id="nav-logout" style="display:none;">Cerrar Sesión</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Descubre tu Próxima Aventura</h1>
+            <p>Explora el catálogo de videojuegos más completo con PolyStation.</p>
+        </section>
+
+        <section id="catalog" class="catalog">
+            <h2 class="section-title">Juegos Destacados</h2>
+            <div class="games-grid" id="games-container">
+                <!-- Se llenará con JS desde el backend -->
+                <div class="game-card">
+                    <div class="game-image">🎮</div>
+                    <div class="game-info">
+                        <h3>Cargando juegos...</h3>
+                        <span class="game-genre">Un momento</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="library" class="catalog" style="display:none;">
+            <h2 class="section-title">Mi Biblioteca de Juegos</h2>
+            <div class="games-grid" id="library-container">
+               <!-- Juegos comprados -->
+            </div>
+        </section>
+
+        <section id="dashboard" class="catalog" style="display:none;">
+            <h2 class="section-title">Dashboard del Distribuidor</h2>
+            <button class="btn-primary" onclick="alert('Funcionalidad de crear juego disponible pronto.')" style="margin-bottom: 1rem;">+ Nuevo Juego</button>
+            <div class="games-grid" id="dashboard-container">
+               <!-- Juegos del distribuidor -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Login / Registro -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('loginModal')">&times;</button>
+            
+            <div class="modal-tabs">
+                <div class="modal-tab active" onclick="switchTab('login')">Login</div>
+                <div class="modal-tab" onclick="switchTab('register')">Registro</div>
+            </div>
+
+            <div id="login-form">
+                <h3 style="margin-bottom: 1.5rem;">Iniciar Sesión</h3>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="login-email" placeholder="correo@ejemplo.com">
+                </div>
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="login-password" placeholder="••••••••">
+                </div>
+                <div class="form-group">
+                    <label>Tipo de Usuario</label>
+                    <select id="login-role" style="width:100%; padding: 0.8rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white;">
+                        <option value="comprador">Comprador</option>
+                        <option value="distribuidor">Distribuidor</option>
+                    </select>
+                </div>
+                <button class="btn-full" onclick="handleLogin()">Entrar</button>
+            </div>
+
+            <div id="register-form" style="display: none;">
+                <h3 style="margin-bottom: 1.5rem;">Crear Cuenta</h3>
+                <div class="form-group">
+                    <label>Nombre de Usuario</label>
+                    <input type="text" id="reg-username" placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="reg-email" placeholder="correo@ejemplo.com">
+                </div>
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="reg-password" placeholder="••••••••">
+                </div>
+                <div class="form-group">
+                    <label>Tipo de Cuenta</label>
+                    <select id="reg-role" style="width:100%; padding: 0.8rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white;">
+                        <option value="comprador">Comprador</option>
+                        <option value="distribuidor">Distribuidor</option>
+                    </select>
+                </div>
+                <button class="btn-full" onclick="handleRegister()">Registrarse</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = '/game/';
+
+        // Initialize user state
+        let token = localStorage.getItem('token');
+        let userRole = localStorage.getItem('rol');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateNav();
+            fetchCatalog();
+        });
+
+        function updateNav() {
+            if (token) {
+                document.getElementById('nav-login').style.display = 'none';
+                document.getElementById('nav-logout').style.display = 'block';
+                
+                if (userRole === 'distribuidor') {
+                    document.getElementById('nav-dashboard').style.display = 'block';
+                    document.getElementById('nav-library').style.display = 'none';
+                } else {
+                    document.getElementById('nav-library').style.display = 'block';
+                    document.getElementById('nav-dashboard').style.display = 'none';
+                }
+            } else {
+                document.getElementById('nav-login').style.display = 'block';
+                document.getElementById('nav-logout').style.display = 'none';
+                document.getElementById('nav-library').style.display = 'none';
+                document.getElementById('nav-dashboard').style.display = 'none';
+            }
+        }
+
+        async function fetchCatalog() {
+            try {
+                const response = await fetch(API_URL); // Catalogo
+                if(response.ok) {
+                    const juegos = await response.json();
+                    const container = document.getElementById('games-container');
+                    container.innerHTML = '';
+                    
+                    if(juegos.length === 0) {
+                        container.innerHTML = '<p style="color: var(--text-muted)">No hay juegos disponibles en este momento.</p>';
+                        return;
+                    }
+
+                    juegos.forEach(juego => {
+                        const imgContent = juego.imagen_url || juego.imagen
+                            ? `<img src="${juego.imagen_url || juego.imagen}" alt="${juego.titulo}" style="width:100%; height:100%; object-fit:cover; border-radius: 15px 15px 0 0;">`
+                            : '🎮';
+
+                        container.innerHTML += `
+                            <div class="game-card">
+                                <div class="game-image">${imgContent}</div>
+                                <div class="game-info">
+                                    <span class="game-genre">${juego.genero || 'Aventura'}</span>
+                                    <h3>${juego.titulo}</h3>
+                                    <span class="game-price">$${juego.precio}</span>
+                                    ${(!userRole || userRole === 'comprador') ? 
+                                      `<button class="btn-full" onclick="comprarJuego('${juego.id}')">Comprar</button>` : 
+                                      ''}
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+            } catch (error) {
+                console.error('Error fetching catalog', error);
+            }
+        }
+
+        async function comprarJuego(id) {
+            if (!token) {
+                alert('Debes iniciar sesión para comprar juegos');
+                openModal('loginModal');
+                return;
+            }
+            try {
+                const response = await fetch(`${API_URL}comprar/${id}/`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                const data = await response.json();
+                if(response.ok) {
+                    alert('¡Juego comprado con éxito!');
+                    fetchLibrary();
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            } catch(e) {
+                console.error(e);
+            }
+        }
+
+        async function fetchLibrary() {
+            try {
+                const response = await fetch(`${API_URL}biblioteca/`, {
+                    method: 'GET'
+                });
+                if(response.ok) {
+                    const juegos = await response.json();
+                    const container = document.getElementById('library-container');
+                    container.innerHTML = '';
+                    juegos.forEach(juego => {
+                        container.innerHTML += `
+                            <div class="game-card">
+                                <div class="game-image">🕹️</div>
+                                <div class="game-info">
+                                    <h3>${juego.titulo}</h3>
+                                    <span class="game-price">Adquirido</span>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        async function handleLogin() {
+            const email = document.getElementById('login-email').value;
+            const pass = document.getElementById('login-password').value;
+            const role = document.getElementById('login-role').value;
+            
+            const endpoint = role === 'distribuidor' ? 'login-distribuidor/' : 'login/';
+
+            try {
+                const res = await fetch(API_URL + endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, password: pass })
+                });
+                const data = await res.json();
+                if(res.ok) {
+                    token = data.token;
+                    userRole = role;
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('rol', role);
+                    closeModal('loginModal');
+                    updateNav();
+                    alert('Sesión iniciada exitosamente');
+                    
+                    if(role === 'comprador') {
+                        fetchLibrary();
+                    } else {
+                        // fetch mis-juegos (distribuidor)
+                    }
+                } else {
+                    alert(data.error || 'Error de credenciales');
+                }
+            } catch(e) {
+                console.error(e);
+            }
+        }
+
+        async function handleRegister() {
+            const username = document.getElementById('reg-username').value;
+            const email = document.getElementById('reg-email').value;
+            const pass = document.getElementById('reg-password').value;
+            const role = document.getElementById('reg-role').value;
+            
+            const endpoint = role === 'distribuidor' ? 'registro-distribuidor/' : 'registro/';
+
+            try {
+                const res = await fetch(API_URL + endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: username, email: email, password: pass })
+                });
+                const data = await res.json();
+                if(res.ok) {
+                    alert('Registro exitoso. Ahora puedes iniciar sesión.');
+                    switchTab('login');
+                } else {
+                    alert(data.error || 'Error al registrar');
+                }
+            } catch(e) {
+                console.error(e);
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('rol');
+            token = null;
+            userRole = null;
+            updateNav();
+            showSection('catalog');
+            alert('Has cerrado sesión');
+        }
+
+        // Helpers
+        function showSection(sectionId) {
+            document.querySelectorAll('main > section').forEach(s => s.style.display = 'none');
+            document.getElementById(sectionId).style.display = 'block';
+            
+            if(sectionId === 'catalog') fetchCatalog();
+            if(sectionId === 'library') fetchLibrary();
+        }
+
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        
+        function switchTab(tab) {
+            document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+            if(tab === 'login') {
+                document.querySelectorAll('.modal-tab')[0].classList.add('active');
+                document.getElementById('login-form').style.display = 'block';
+                document.getElementById('register-form').style.display = 'none';
+            } else {
+                document.querySelectorAll('.modal-tab')[1].classList.add('active');
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('register-form').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
