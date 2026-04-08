@@ -79,19 +79,19 @@ Authorization: Bearer
 }
 
 ### Editar un juego
-PUT http://127.0.0.1:8000/game/editar-juego/abc123/
+PUT http://127.0.0.1:8000/game/editar-juego/4DEhLtmaJXJPliCJ6rm1/
 Content-Type: application/json
 Authorization: Bearer 
 
 {
-    "titulo": "Mario 2",
-    "descripcion": "Versión mejorada",
-    "precio": 19.99,
-    "genero": "Plataformero"
+    "titulo": "DeadLock",
+    "descripcion": "Un juego de disparos y MOBA",
+    "precio": 0,
+    "genero": "MOBA"
 }
-
+ 
 ### Eliminar un juego
-DELETE http://127.0.0.1:8000/game/eliminar-juego/abc123/
+DELETE http://127.0.0.1:8000/game/eliminar-juego/pBODGcYXcvfX53MMgaDh/
 Authorization: Bearer 
 
 ### 4 subir imagen a firestore
@@ -126,9 +126,9 @@ Content-Type: application/json
 Authorization: Bearer AQUI_TU_TOKEN
 
 {
-    "titulo": "Mario Kart 8",
-    "descripcion": "El mejor juego de carreras.",
-    "precio": 59.99,
-    "genero": "Carreras",
-    "imagen_url": "https://res.cloudinary.com/tu-usuario/image/upload/v1234/mariokart.jpg"
+    "titulo": "Devil May Cry V",
+    "descripcion": "Un juego Hack and Slash",
+    "precio": 7.49,
+    "genero": "Hack and Slash",
+    "imagen_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/601150/capsule_616x353.jpg?t=1768869803"
 }
