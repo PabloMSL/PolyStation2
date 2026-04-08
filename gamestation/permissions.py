@@ -2,14 +2,38 @@ from rest_framework import permissions
 
 class IsVendedor(permissions.BasePermission):
     """
-    Permitir el acceso unicamente a los usuarios con rol de Vendedor
+    Permitir acceso a usuarios con rol distribuidor o vendedor
     """
     def has_permission(self, request, view):
-        return bool(request.user and request.user.rol == 'Vendedor')
-    
+        return bool(
+            request.user and
+            hasattr(request.user, 'rol') and
+            request.user.rol and
+            request.user.rol.lower() in ['vendedor', 'distribuidor']
+        )
+
+
 class IsAdministrador(permissions.BasePermission):
     """
-    Permitir el acceso unicamente a los usuarios con rol de Administrador 
+    Permitir acceso solo a usuarios con rol administrador
     """
     def has_permission(self, request, view):
-        return bool(request.user and request.user.rol == 'Administrador')
+        return bool(
+            request.user and
+            hasattr(request.user, 'rol') and
+            request.user.rol and
+            request.user.rol.lower() == 'administrador'
+        )
+
+
+class IsComprador(permissions.BasePermission):
+    """
+    Permitir acceso solo a usuarios con rol comprador
+    """
+    def has_permission(self, request, view):
+        return bool(
+            request.user and
+            hasattr(request.user, 'rol') and
+            request.user.rol and
+            request.user.rol.lower() == 'comprador'
+        )

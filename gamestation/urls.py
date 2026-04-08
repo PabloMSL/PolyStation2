@@ -2,6 +2,7 @@ from django.urls import path
 from .views_comprador import *
 from .views_distribuidor import *
 from .views_chat import *
+from .views_estadisticas import *
 
 urlpatterns = [
 
@@ -26,5 +27,11 @@ path('mis-juegos/', listar_juegos_distribuidor, name='listar_juegos_distribuidor
 path('crear-juego/', crear_juego, name='crear_juego'),
 path('editar-juego/<str:juego_id>/', editar_juego, name='editar_juego'),
 path('eliminar-juego/<str:juego_id>/', eliminar_juego, name='eliminar_juego'),
+
+#ESTADISTICAS
+path('estadisticas/distribuidor/', EstadisticasDistribuidorAPIView.as_view(), name='estadisticas_distribuidor'),
+path('estadisticas/comprador/', EstadisticasCompradorAPIView.as_view(), name='estadisticas_comprador'),
+
+
 
 ]
