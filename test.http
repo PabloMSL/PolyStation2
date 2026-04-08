@@ -103,7 +103,7 @@ Content-Type: multipart/form-data; boundary=MiBoundary
 Content-Disposition: form-data; name="imagen"; filename="avatar.jpeg"
 Content-Type: image/jpeg
 
-< C:\Users\SENA\Desktop\christian2\donkey.jpeg
+< C:\Users\SENA\Desktop\christian2\donkey.jpe
 --MiBoundary--
 
 
