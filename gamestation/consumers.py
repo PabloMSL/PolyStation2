@@ -55,3 +55,51 @@ class PriceConsumer(AsyncWebsocketConsumer):
 
         # IMPORTANTE: Asegúrate de que 'juegos' sea el nombre de tu colección en Firestore
         db.collection('juegos').on_snapshot(on_snapshot)
+
+class TopGameConsumer(AsyncWebsocketConsumer):
+    async def connect(self):
+        self.room_name = "top_game"
+        await self.channel_layer.group_add(self.room_name, self.channel_name)
+        await self.accept()
+
+        loop = asyncio.get_event_loop()
+        loop.run_in_executor(None, self.escuchar_compras)
+
+    async def disconnect(self, close_code):
+        await self.channel_layer.group_discard(self.room_name, self.channel_name)
+
+    async def top_game_update(self, event):
+        await self.send(text_data=json.dumps({
+            'juego_id': event['juego_id'],
+            'titulo': event['titulo'],
+            'compras': event['compras'],
+        }))
+
+    def escuchar_compras(self):
+        def on_snapshot(col_snapshot, changes, read_time):
+            conteo = {}
+            for doc in col_snapshot:
+                data = doc.to_dict()
+                j_id = data.get('juego_id')
+                titulo = data.get('titulo')
+                if j_id:
+                    if j_id not in conteo:
+                        conteo[j_id] = {'count': 0, 'titulo': titulo}
+                    conteo[j_id]['count'] += 1
+            
+            if conteo:
+                top_id = max(conteo, key=lambda k: conteo[k]['count'])
+                top_data = conteo[top_id]
+                
+                layer = get_channel_layer()
+                async_to_sync(layer.group_send)(
+                    self.room_name,
+                    {
+                        'type': 'top_game_update',
+                        'juego_id': top_id,
+                        'titulo': top_data['titulo'],
+                        'compras': top_data['count']
+                    }
+                )
+
+        db.collection('compras').on_snapshot(on_snapshot)

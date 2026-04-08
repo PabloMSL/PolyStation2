@@ -326,6 +326,19 @@
             <p>Explora el catálogo de videojuegos más completo con PolyStation.</p>
         </section>
 
+        <section id="top-game-section" class="catalog" style="display:none; padding-top: 0; padding-bottom: 0;">
+            <div style="background: linear-gradient(45deg, #1a1f2e, #ff007a22); border: 1px solid var(--accent); border-radius: 20px; padding: 2rem; margin: 0 2rem 2rem; display: flex; align-items: center; justify-content: space-between; transition: all 0.5s;" id="top-game-card">
+                <div>
+                    <h2 style="color: var(--accent); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 10px;">🔥 Juego Más Popular del Momento</h2>
+                    <h3 id="top-game-title" style="font-size: 2rem; font-weight: 800;">Calculando...</h3>
+                </div>
+                <div style="text-align: right;">
+                    <div id="top-game-compras" style="font-size: 3rem; font-weight: 900; color: var(--primary);">0</div>
+                    <div style="color: var(--muted); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">Ventas Globales</div>
+                </div>
+            </div>
+        </section>
+
         <section id="catalog" class="catalog">
             <h2 class="section-title">Juegos Destacados</h2>
             <div class="games-grid" id="games-container">
@@ -541,6 +554,40 @@
 
         priceSocket.onclose = function (e) {
             console.error('El WebSocket de precios se ha desconectado.');
+        };
+        // ============================================
+
+        // ============================================
+        // CONEXIÓN WEBSOCKET PARA TOP VENTAS
+        // ============================================
+        const topSocket = new WebSocket(`${ws_scheme}://${window.location.host}/ws/top-game/`);
+
+        topSocket.onmessage = function (e) {
+            const data = JSON.parse(e.data);
+            
+            document.getElementById('top-game-section').style.display = 'block';
+            
+            const titleEl = document.getElementById('top-game-title');
+            const comprasEl = document.getElementById('top-game-compras');
+            const cardEl = document.getElementById('top-game-card');
+            
+            if(titleEl.innerText !== data.titulo || parseInt(comprasEl.innerText) !== data.compras) {
+                titleEl.innerText = data.titulo;
+                comprasEl.innerText = data.compras;
+                
+                // Efecto visual al actualizarse
+                cardEl.style.boxShadow = '0 0 30px rgba(255, 0, 122, 0.5)';
+                cardEl.style.transform = 'scale(1.02)';
+                
+                setTimeout(() => {
+                    cardEl.style.boxShadow = 'none';
+                    cardEl.style.transform = 'scale(1)';
+                }, 1000);
+            }
+        };
+
+        topSocket.onclose = function (e) {
+            console.error('El WebSocket de Top Game se ha desconectado.');
         };
         // ============================================
 
